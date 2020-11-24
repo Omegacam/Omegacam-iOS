@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149B2256CEA6A0093E6AE /* AppDelegate.swift */; };
+		33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */; };
+		33C149BA256CEA6A0093E6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C149B8256CEA6A0093E6AE /* Main.storyboard */; };
+		33C149BC256CEA6C0093E6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C149BB256CEA6C0093E6AE /* Assets.xcassets */; };
+		33C149BF256CEA6C0093E6AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C149BD256CEA6C0093E6AE /* LaunchScreen.storyboard */; };
+		33C149CA256CEA6C0093E6AE /* Omegacam_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149C9256CEA6C0093E6AE /* Omegacam_iosTests.swift */; };
+		33C149D5256CEA6C0093E6AE /* Omegacam_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149D4256CEA6C0093E6AE /* Omegacam_iosUITests.swift */; };
+		33C149E6256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
+		33C149E7256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
+		33C149E8256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33C149C6256CEA6C0093E6AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33C149A7256CEA6A0093E6AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33C149AE256CEA6A0093E6AE;
+			remoteInfo = "Omegacam-ios";
+		};
+		33C149D1256CEA6C0093E6AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33C149A7256CEA6A0093E6AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33C149AE256CEA6A0093E6AE;
+			remoteInfo = "Omegacam-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Omegacam-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C149B2256CEA6A0093E6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		33C149B9256CEA6A0093E6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		33C149BB256CEA6C0093E6AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33C149BE256CEA6C0093E6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		33C149C0256CEA6C0093E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33C149C5256CEA6C0093E6AE /* Omegacam-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Omegacam-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C149C9256CEA6C0093E6AE /* Omegacam_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Omegacam_iosTests.swift; sourceTree = "<group>"; };
+		33C149CB256CEA6C0093E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33C149D0256CEA6C0093E6AE /* Omegacam-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Omegacam-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C149D4256CEA6C0093E6AE /* Omegacam_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Omegacam_iosUITests.swift; sourceTree = "<group>"; };
+		33C149D6256CEA6C0093E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33C149E5256CEADA0093E6AE /* mainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33C149AC256CEA6A0093E6AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149C2256CEA6C0093E6AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149CD256CEA6C0093E6AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33C149A6256CEA6A0093E6AE = {
+			isa = PBXGroup;
+			children = (
+				33C149B1256CEA6A0093E6AE /* Omegacam-ios */,
+				33C149C8256CEA6C0093E6AE /* Omegacam-iosTests */,
+				33C149D3256CEA6C0093E6AE /* Omegacam-iosUITests */,
+				33C149B0256CEA6A0093E6AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		33C149B0256CEA6A0093E6AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */,
+				33C149C5256CEA6C0093E6AE /* Omegacam-iosTests.xctest */,
+				33C149D0256CEA6C0093E6AE /* Omegacam-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33C149B1256CEA6A0093E6AE /* Omegacam-ios */ = {
+			isa = PBXGroup;
+			children = (
+				33C149B2256CEA6A0093E6AE /* AppDelegate.swift */,
+				33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */,
+				33C149E5256CEADA0093E6AE /* mainView.swift */,
+				33C149B8256CEA6A0093E6AE /* Main.storyboard */,
+				33C149BB256CEA6C0093E6AE /* Assets.xcassets */,
+				33C149BD256CEA6C0093E6AE /* LaunchScreen.storyboard */,
+				33C149C0256CEA6C0093E6AE /* Info.plist */,
+			);
+			path = "Omegacam-ios";
+			sourceTree = "<group>";
+		};
+		33C149C8256CEA6C0093E6AE /* Omegacam-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				33C149C9256CEA6C0093E6AE /* Omegacam_iosTests.swift */,
+				33C149CB256CEA6C0093E6AE /* Info.plist */,
+			);
+			path = "Omegacam-iosTests";
+			sourceTree = "<group>";
+		};
+		33C149D3256CEA6C0093E6AE /* Omegacam-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				33C149D4256CEA6C0093E6AE /* Omegacam_iosUITests.swift */,
+				33C149D6256CEA6C0093E6AE /* Info.plist */,
+			);
+			path = "Omegacam-iosUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		33C149AE256CEA6A0093E6AE /* Omegacam-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33C149D9256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-ios" */;
+			buildPhases = (
+				33C149AB256CEA6A0093E6AE /* Sources */,
+				33C149AC256CEA6A0093E6AE /* Frameworks */,
+				33C149AD256CEA6A0093E6AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Omegacam-ios";
+			productName = "Omegacam-ios";
+			productReference = 33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33C149C4256CEA6C0093E6AE /* Omegacam-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33C149DC256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosTests" */;
+			buildPhases = (
+				33C149C1256CEA6C0093E6AE /* Sources */,
+				33C149C2256CEA6C0093E6AE /* Frameworks */,
+				33C149C3256CEA6C0093E6AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33C149C7256CEA6C0093E6AE /* PBXTargetDependency */,
+			);
+			name = "Omegacam-iosTests";
+			productName = "Omegacam-iosTests";
+			productReference = 33C149C5256CEA6C0093E6AE /* Omegacam-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		33C149CF256CEA6C0093E6AE /* Omegacam-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33C149DF256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosUITests" */;
+			buildPhases = (
+				33C149CC256CEA6C0093E6AE /* Sources */,
+				33C149CD256CEA6C0093E6AE /* Frameworks */,
+				33C149CE256CEA6C0093E6AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33C149D2256CEA6C0093E6AE /* PBXTargetDependency */,
+			);
+			name = "Omegacam-iosUITests";
+			productName = "Omegacam-iosUITests";
+			productReference = 33C149D0256CEA6C0093E6AE /* Omegacam-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33C149A7256CEA6A0093E6AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					33C149AE256CEA6A0093E6AE = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					33C149C4256CEA6C0093E6AE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 33C149AE256CEA6A0093E6AE;
+					};
+					33C149CF256CEA6C0093E6AE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 33C149AE256CEA6A0093E6AE;
+					};
+				};
+			};
+			buildConfigurationList = 33C149AA256CEA6A0093E6AE /* Build configuration list for PBXProject "Omegacam-ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 33C149A6256CEA6A0093E6AE;
+			productRefGroup = 33C149B0256CEA6A0093E6AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33C149AE256CEA6A0093E6AE /* Omegacam-ios */,
+				33C149C4256CEA6C0093E6AE /* Omegacam-iosTests */,
+				33C149CF256CEA6C0093E6AE /* Omegacam-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33C149AD256CEA6A0093E6AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33C149BF256CEA6C0093E6AE /* LaunchScreen.storyboard in Resources */,
+				33C149BC256CEA6C0093E6AE /* Assets.xcassets in Resources */,
+				33C149BA256CEA6A0093E6AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149C3256CEA6C0093E6AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149CE256CEA6C0093E6AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33C149AB256CEA6A0093E6AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33C149E6256CEADA0093E6AE /* mainView.swift in Sources */,
+				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
+				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149C1256CEA6C0093E6AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33C149CA256CEA6C0093E6AE /* Omegacam_iosTests.swift in Sources */,
+				33C149E7256CEADA0093E6AE /* mainView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C149CC256CEA6C0093E6AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33C149D5256CEA6C0093E6AE /* Omegacam_iosUITests.swift in Sources */,
+				33C149E8256CEADA0093E6AE /* mainView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		33C149C7256CEA6C0093E6AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33C149AE256CEA6A0093E6AE /* Omegacam-ios */;
+			targetProxy = 33C149C6256CEA6C0093E6AE /* PBXContainerItemProxy */;
+		};
+		33C149D2256CEA6C0093E6AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33C149AE256CEA6A0093E6AE /* Omegacam-ios */;
+			targetProxy = 33C149D1256CEA6C0093E6AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		33C149B8256CEA6A0093E6AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33C149B9256CEA6A0093E6AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		33C149BD256CEA6C0093E6AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33C149BE256CEA6C0093E6AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		33C149D7256CEA6C0093E6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		33C149D8256CEA6C0093E6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		33C149DA256CEA6C0093E6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33C149DB256CEA6C0093E6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		33C149DD256CEA6C0093E6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Omegacam-ios.app/Omegacam-ios";
+			};
+			name = Debug;
+		};
+		33C149DE256CEA6C0093E6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Omegacam-ios.app/Omegacam-ios";
+			};
+			name = Release;
+		};
+		33C149E0256CEA6C0093E6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Omegacam-ios";
+			};
+			name = Debug;
+		};
+		33C149E1256CEA6C0093E6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Omegacam-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.richardwei6.Omegacam-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Omegacam-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33C149AA256CEA6A0093E6AE /* Build configuration list for PBXProject "Omegacam-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33C149D7256CEA6C0093E6AE /* Debug */,
+				33C149D8256CEA6C0093E6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33C149D9256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33C149DA256CEA6C0093E6AE /* Debug */,
+				33C149DB256CEA6C0093E6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33C149DC256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33C149DD256CEA6C0093E6AE /* Debug */,
+				33C149DE256CEA6C0093E6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33C149DF256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33C149E0256CEA6C0093E6AE /* Debug */,
+				33C149E1256CEA6C0093E6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33C149A7256CEA6A0093E6AE /* Project object */;
+}
