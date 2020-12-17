@@ -16,9 +16,7 @@ class mainClass: UIViewController {
         let mainViewFrame = CGRect(x: 0, y: 0, width: containerSize.width, height: containerSize.height);
         let mainView = UIView(frame: mainViewFrame);
         
-        mainView.backgroundColor = UIColor.green;
-        
-        
+        mainView.backgroundColor = BackgroundColor;
         
         self.view.addSubview(mainView);
     }
