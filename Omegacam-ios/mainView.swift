@@ -7,11 +7,20 @@
 
 import UIKit
 
-class mainView: UIViewController {
+class mainClass: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let containerSize = AppUtility.getCurrentScreenSize();
+        let mainViewFrame = CGRect(x: 0, y: 0, width: containerSize.width, height: containerSize.height);
+        let mainView = UIView(frame: mainViewFrame);
+        
+        mainView.backgroundColor = UIColor.green;
+        
+        
+        
+        self.view.addSubview(mainView);
     }
 
 

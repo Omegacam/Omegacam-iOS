@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A828F82588950F00CE8B4B /* AppUtility.swift */; };
+		33ACEF4B258B245500882601 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
 		33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149B2256CEA6A0093E6AE /* AppDelegate.swift */; };
 		33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */; };
 		33C149BA256CEA6A0093E6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C149B8256CEA6A0093E6AE /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33A828F82588950F00CE8B4B /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		33ACEF4A258B245500882601 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../Assets; sourceTree = "<group>"; };
 		33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Omegacam-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C149B2256CEA6A0093E6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,12 +106,14 @@
 			isa = PBXGroup;
 			children = (
 				33C149B2256CEA6A0093E6AE /* AppDelegate.swift */,
+				33A828F82588950F00CE8B4B /* AppUtility.swift */,
 				33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */,
 				33C149E5256CEADA0093E6AE /* mainView.swift */,
 				33C149B8256CEA6A0093E6AE /* Main.storyboard */,
-				33C149BB256CEA6C0093E6AE /* Assets.xcassets */,
 				33C149BD256CEA6C0093E6AE /* LaunchScreen.storyboard */,
 				33C149C0256CEA6C0093E6AE /* Info.plist */,
+				33C149BB256CEA6C0093E6AE /* Assets.xcassets */,
+				33ACEF4A258B245500882601 /* Assets */,
 			);
 			path = "Omegacam-ios";
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C149BF256CEA6C0093E6AE /* LaunchScreen.storyboard in Resources */,
+				33ACEF4B258B245500882601 /* Assets in Resources */,
 				33C149BC256CEA6C0093E6AE /* Assets.xcassets in Resources */,
 				33C149BA256CEA6A0093E6AE /* Main.storyboard in Resources */,
 			);
@@ -260,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */,
 				33C149E6256CEADA0093E6AE /* mainView.swift in Sources */,
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
 				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,
