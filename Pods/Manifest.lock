@@ -1,0 +1,22 @@
+PODS:
+  - SwiftyZeroMQ5 (1.3.0)
+
+DEPENDENCIES:
+  - SwiftyZeroMQ5 (from `https://github.com/richardwei6/SwiftyZeroMQ5.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  SwiftyZeroMQ5:
+    :branch: master
+    :git: https://github.com/richardwei6/SwiftyZeroMQ5.git
+
+CHECKOUT OPTIONS:
+  SwiftyZeroMQ5:
+    :commit: cae7dae3b4b355ec0d8eddd6e10291745f39b3f8
+    :git: https://github.com/richardwei6/SwiftyZeroMQ5.git
+
+SPEC CHECKSUMS:
+  SwiftyZeroMQ5: 2eef9b705384a9a94c50484ad01b503e7cce0d24
+
+PODFILE CHECKSUM: cf2370564f5dfa2b96dbd58c092e77806b35e016
+
+COCOAPODS: 1.9.3
