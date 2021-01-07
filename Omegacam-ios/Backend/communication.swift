@@ -37,9 +37,10 @@ class communicationClass{
     
     public func send(data: String) -> Bool{
         do{
-            try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
+            //try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
            // try radio?.send(data: data.data(using: .utf8)!);
            // try pub?.send(string: data);
+            try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8) ?? Data());
         }
         catch{
             print("SEND COMMUNICATION error - \(error)");
