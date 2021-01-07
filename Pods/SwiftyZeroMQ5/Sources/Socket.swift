@@ -620,6 +620,31 @@ extension SwiftyZeroMQ {
         }
         
         public func sendRadioMessage(group: String, data: Data) throws{
+            var msg = zmq_msg_t();
+            var rc : Int32;
+            
+            rc = zmq_msg_init(&msg);
+            if rc != 0 {
+                throw ZeroMQError.last;
+            }
+            
+            let data_ns = (data as NSData);
+            
+            rc = zmq_msg_init_size(&msg, data_ns.length);
+            if rc != 0 {
+                throw ZeroMQError.last;
+            }
+            
+            if (data_ns.length > 0){
+                memcpy(zmq_msg_data(&msg), data_ns.bytes, data_ns.length);
+            }
+            
+            rc = zmq_msg_set_group(&msg, group);
+            if rc != 0{
+                throw ZeroMQError.last;
+            }
+            
+            print(zmq_msg_send(&msg, self.handle, 0));
             
         }
         
