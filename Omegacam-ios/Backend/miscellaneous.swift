@@ -12,3 +12,5 @@ let AccentColor = UIColor(named: "AccentColor")!;
 let BackgroundColor = UIColor(named: "BackgroundColor")!;
 let BackgroundGray = UIColor(named: "BackgroundGray")!;
 let InverseBackgroundColor = UIColor(named: "InverseBackgroundColor")!;
+
+let communication = communicationClass.obj;

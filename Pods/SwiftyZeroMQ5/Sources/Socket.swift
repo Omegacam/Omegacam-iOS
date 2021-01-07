@@ -619,6 +619,10 @@ extension SwiftyZeroMQ {
             }
         }
         
+        public func sendRadioMessage(group: String, data: Data) throws{
+            
+        }
+        
     }
     
 }
