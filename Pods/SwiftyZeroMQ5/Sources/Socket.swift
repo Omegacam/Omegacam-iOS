@@ -619,8 +619,8 @@ extension SwiftyZeroMQ {
             }
         }
         
-        public func sendRadioMessage(group: String, data: Data) throws{
-            var msg = zmq_msg_t();
+        public func sendRadioMessage(group: String, data: NSData) throws{
+            /*var msg = zmq_msg_t();
             var rc : Int32;
             
             rc = zmq_msg_init(&msg);
@@ -644,8 +644,27 @@ extension SwiftyZeroMQ {
                 throw ZeroMQError.last;
             }
             
-            print(zmq_msg_send(&msg, self.handle, 0));
+             print(zmq_msg_send(&msg, self.handle, 0));
+             */
+            var msg = zmq_msg_t.init();
+            var result : Int32;
+            let flags: SocketSendRecvOption = .none
             
+            
+            result = zmq_msg_init_data(&msg, UnsafeMutableRawPointer(mutating: data.bytes), data.length, nil, nil);
+            if (result == -1) { throw ZeroMQError.last }
+            
+            defer {
+                // Clean up message on scope exit
+                zmq_msg_close(&msg)
+            }
+            
+            result = zmq_msg_set_group(&msg, group);
+            if (result == -1) { throw ZeroMQError.last }
+            
+            result = zmq_msg_send(&msg, self.handle, flags.rawValue);
+            if (result == -1) { throw ZeroMQError.last }
+            print("sent \(result) bytes")
         }
         
     }

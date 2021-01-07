@@ -40,7 +40,7 @@ class communicationClass{
             //try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
            // try radio?.send(data: data.data(using: .utf8)!);
            // try pub?.send(string: data);
-            try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8) ?? Data());
+            try radio?.sendRadioMessage(group: group, data: (data.data(using: .utf8) as! NSData));
         }
         catch{
             print("SEND COMMUNICATION error - \(error)");
