@@ -40,7 +40,7 @@ class communicationClass{
             //try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
            // try radio?.send(data: data.data(using: .utf8)!);
            // try pub?.send(string: data);
-            try radio?.sendRadioMessage(group: group, data: (data.data(using: .utf8) as! NSData));
+            try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8)!);
         }
         catch{
             print("SEND COMMUNICATION error - \(error)");
@@ -58,6 +58,7 @@ class communicationClass{
             radio = try context?.socket(.radio);
             
             try radio?.connect(connectionString);
+            //try radio?.joinGroup(connectionGroup);
             
             //print(zmq_bind(pub?.handle, connectionstr));
             
@@ -82,8 +83,8 @@ class communicationClass{
     
     public func disconnect()->Bool{
         do{
-            try radio?.leaveGroup(group);
-            //try radio?.disconnect(connectionString);
+            //try radio?.leaveGroup(group);
+            try radio?.disconnect(connectionString);
             try radio?.close();
             radio = nil;
             //dish = nil;
@@ -109,6 +110,27 @@ class communicationClass{
         
         return true;
     }
+    
+    public func convertErrno(errorn: Int32) -> String{
+           switch errorn {
+           case EAGAIN:
+               return "EAGAIN - Non-blocking mode was requested and no messages are available at the moment.";
+           case ENOTSUP:
+               return "ENOTSUP - The zmq_recv() operation is not supported by this socket type.";
+           case EFSM:
+               return "EFSM - The zmq_recv() operation cannot be performed on this socket at the moment due to the socket not being in the appropriate state.";
+           case ETERM:
+               return "ETERM - The ØMQ context associated with the specified socket was terminated.";
+           case ENOTSOCK:
+               return "ENOTSOCK - The provided socket was invalid.";
+           case EINTR:
+               return "EINTR - The operation was interrupted by delivery of a signal before a message was available.";
+           case EFAULT:
+               return "EFAULT - The message passed to the function was invalid.";
+           default:
+               return "Not valid errno code";
+           }
+       }
 }
 
 // IOS 14 doesn't allow the app the recieve UDP multicast but there isn't an official API to initate the prompt for these permissions. The class below grants permssion to the app by sending phony packets locally which is stupid but there isn't any other option. Apple's support has said themself that you should send out packets as a temporary workaround.

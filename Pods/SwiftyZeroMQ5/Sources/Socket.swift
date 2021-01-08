@@ -605,6 +605,12 @@ extension SwiftyZeroMQ {
         
         // DRAFT SOCKET METHODS ---------
         
+        private func checkRC(rc: Int32) throws{
+            if rc == -1{
+                throw ZeroMQError.last;
+            }
+        }
+        
         public func joinGroup(_ group: String) throws{
             let result = zmq_join(self.handle, group);
             if result == -1 {
@@ -619,7 +625,7 @@ extension SwiftyZeroMQ {
             }
         }
         
-        public func sendRadioMessage(group: String, data: NSData) throws{
+        public func sendRadioMessage(group: String, data: Data) throws{
             /*var msg = zmq_msg_t();
             var rc : Int32;
             
@@ -646,7 +652,7 @@ extension SwiftyZeroMQ {
             
              print(zmq_msg_send(&msg, self.handle, 0));
              */
-            var msg = zmq_msg_t.init();
+            /*var msg = zmq_msg_t.init();
             var result : Int32;
             let flags: SocketSendRecvOption = .none
             
@@ -664,7 +670,20 @@ extension SwiftyZeroMQ {
             
             result = zmq_msg_send(&msg, self.handle, flags.rawValue);
             if (result == -1) { throw ZeroMQError.last }
-            print("sent \(result) bytes")
+            print("sent \(result) bytes")*/
+            
+            let dataSize = data.count;
+            let dataRaw = (data as NSData).bytes;
+            
+            var msg = zmq_msg_t.init();
+            try checkRC(rc: zmq_msg_init_size(&msg, dataSize));
+            
+            memcpy(zmq_msg_data(&msg), dataRaw, dataSize);
+            
+            try checkRC(rc: zmq_msg_send(&msg, self.handle, 0));
+            
+            try checkRC(rc: zmq_msg_close(&msg));
+            
         }
         
     }
