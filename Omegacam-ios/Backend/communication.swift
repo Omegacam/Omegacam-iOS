@@ -57,7 +57,7 @@ class communicationClass{
         do{
             pub = try context?.socket(.publish);
             
-            try pub?.bind(connectionString);
+            try pub?.connect(connectionString);
             //try radio?.joinGroup(connectionGroup);
             
             //print(zmq_bind(pub?.handle, connectionstr));

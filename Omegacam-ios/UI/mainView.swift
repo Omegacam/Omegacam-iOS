@@ -36,7 +36,7 @@ class mainClass: UIViewController {
         
         self.view.addSubview(mainView);
         
-        print(communication.connect(connectionstr: "udp://224.0.0.1:28650", connectionGroup: "t", sendTimeout: 30, sendBuffer: 30));
+        print(communication.connect(connectionstr: "tcp://224.0.0.1:5551", connectionGroup: "t", sendTimeout: 30, sendBuffer: 30));
      
         /*DispatchQueue.main.async {
             while true{
