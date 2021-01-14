@@ -625,7 +625,7 @@ extension SwiftyZeroMQ {
             }
         }
         
-        public func sendRadioMessage(group: String, data: Data) throws{
+        /*public func sendRadioMessage(group: String, data: Data) throws{
             /*var msg = zmq_msg_t();
             var rc : Int32;
             
@@ -676,15 +676,24 @@ extension SwiftyZeroMQ {
             let dataRaw = (data as NSData).bytes;
             
             var msg = zmq_msg_t.init();
-            try checkRC(rc: zmq_msg_init_size(&msg, dataSize));
+            try checkRC(rc: zmq_msg_init(&msg));
             
-            memcpy(zmq_msg_data(&msg), dataRaw, dataSize);
+            print("msg before - \(zmq_msg_data(&msg))")
             
-            try checkRC(rc: zmq_msg_send(&msg, self.handle, 0));
+            try checkRC(rc: zmq_msg_init_data(&msg, UnsafeMutableRawPointer(mutating: dataRaw), dataSize, nil, nil));
+            //try checkRC(rc: zmq_msg_init_size(&msg, dataSize));
+            
+            //memcpy(zmq_msg_data(&msg), dataRaw, dataSize);
+            
+            try checkRC(rc: zmq_msg_set_group(&msg, group));
+            
+            print("msg after - \(zmq_msg_data(&msg)) compared to \(dataRaw)")
+            
+            print("sent - \(zmq_msg_send(&msg, self.handle, 0)) bytes");
             
             try checkRC(rc: zmq_msg_close(&msg));
             
-        }
+        }*/
         
     }
     

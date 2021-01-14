@@ -14,7 +14,7 @@ class communicationClass{
     var connectionString = "";
     var group = "";
     var context : SwiftyZeroMQ.Context?;
-    var radio : SwiftyZeroMQ.Socket?;
+    var pub : SwiftyZeroMQ.Socket?;
     
     static let obj = communicationClass(); // singleton pattern
     private init(){ // singleton pattern
@@ -39,8 +39,8 @@ class communicationClass{
         do{
             //try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
            // try radio?.send(data: data.data(using: .utf8)!);
-           // try pub?.send(string: data);
-            try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8)!);
+            try pub?.send(string: data);
+            //try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8)!);
         }
         catch{
             print("SEND COMMUNICATION error - \(error)");
@@ -55,9 +55,9 @@ class communicationClass{
         group = connectionGroup;
         
         do{
-            radio = try context?.socket(.radio);
+            pub = try context?.socket(.publish);
             
-            try radio?.connect(connectionString);
+            try pub?.bind(connectionString);
             //try radio?.joinGroup(connectionGroup);
             
             //print(zmq_bind(pub?.handle, connectionstr));
@@ -84,9 +84,9 @@ class communicationClass{
     public func disconnect()->Bool{
         do{
             //try radio?.leaveGroup(group);
-            try radio?.disconnect(connectionString);
-            try radio?.close();
-            radio = nil;
+            try pub?.disconnect(connectionString);
+            try pub?.close();
+            pub = nil;
             //dish = nil;
             //try context?.close();
         }
