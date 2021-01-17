@@ -10,7 +10,6 @@ import UIKit
 class mainClass: UIViewController {
 
     @objc internal func clicked(_ sender: UIButton){
-        print(communication.send(data: "Test Data"));
     }
     
     override func viewDidLoad() {
@@ -35,21 +34,7 @@ class mainClass: UIViewController {
         mainView.addSubview(button);
         
         self.view.addSubview(mainView);
-        
-        print(communication.connect(connectionstr: "tcp://224.0.0.1:5551", connectionGroup: "t", sendTimeout: 30, sendBuffer: 30));
-     
-        /*DispatchQueue.main.async {
-            while true{
-                do{
-                    try print(communication.dish?.recv());
-                }
-                catch{
-                    if (errno != EAGAIN){
-                        print("error - \(communication.convertErrno(errorn: errno))");
-                    }
-                }
-            }
-        }*/
+
         
     }
 

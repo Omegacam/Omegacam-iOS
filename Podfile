@@ -6,7 +6,7 @@ target 'Omegacam-ios' do
   use_frameworks!
 
   # Pods for Omegacam-ios
-  pod 'SwiftyZeroMQ5', :git => 'https://github.com/richardwei6/SwiftyZeroMQ5.git', :branch => 'master'
+  pod 'Socket.IO-Client-Swift'
 
   target 'Omegacam-iosTests' do
     inherit! :search_paths

@@ -6,131 +6,18 @@
 //
 
 import Foundation
-import SwiftyZeroMQ5
 import Network
 import MessagePacker
 
 class communicationClass{
-    var connectionString = "";
-    var group = "";
-    var context : SwiftyZeroMQ.Context?;
-    var pub : SwiftyZeroMQ.Socket?;
-    
+
     static let obj = communicationClass(); // singleton pattern
     private init(){ // singleton pattern
-        printVersion();
         let permissionObj = LocalNetworkPermissionService();
         permissionObj.triggerDialog();
-        do{
-            context = try SwiftyZeroMQ.Context();
-        }
-        catch{
-            print("COMMUNICATION ERROR : CONTEXT CREATION - \(error)");
-        }
     }
+
     
-    internal func printVersion(){
-        let (major, minor, patch, _) = SwiftyZeroMQ.version;
-        print("ZeroMQ library version is \(major).\(minor) with patch level .\(patch)");
-        print("SwiftyZeroMQ version is \(SwiftyZeroMQ.frameworkVersion)");
-    }
-    
-    public func send(data: String) -> Bool{
-        do{
-            //try radio?.sendRadioMessage(group: group, data: MessagePackEncoder().encode(data));
-           // try radio?.send(data: data.data(using: .utf8)!);
-            try pub?.send(string: data);
-            //try radio?.sendRadioMessage(group: group, data: data.data(using: .utf8)!);
-        }
-        catch{
-            print("SEND COMMUNICATION error - \(error)");
-            return false;
-        }
-        return true;
-    }
-    
-    public func connect(connectionstr: String, connectionGroup: String, sendTimeout: Int, sendBuffer: Int)->Bool{
-        
-        connectionString = connectionstr;
-        group = connectionGroup;
-        
-        do{
-            pub = try context?.socket(.publish);
-            
-            try pub?.connect(connectionString);
-            //try radio?.joinGroup(connectionGroup);
-            
-            //print(zmq_bind(pub?.handle, connectionstr));
-            
-            //try pub?.setSubscribe(topic);
-            //try radio?.joinGroup(topic);
-            /*try pub?.setRecvTimeout(Int32(sendTimeout)); // in ms
-            try pub?.setRecvBufferSize(Int32(sendBuffer));*/
-            
-            /*try radio?.bind(connectionString);
-            //try dish?.setSubscribe("telemetry");
-            try dish?.joinGroup(group);
-            try dish?.setRecvTimeout(Int32(recvReconnect)); // in ms
-            try dish?.setRecvBufferSize(Int32(recvBuffer));*/
-        }
-        catch{
-            print("CONNECT COMMUNICATION error - \(error)");
-            //lastCommunicationError = "\(error)";
-            return false;
-        }
-        return true;
-    }
-    
-    public func disconnect()->Bool{
-        do{
-            //try radio?.leaveGroup(group);
-            try pub?.disconnect(connectionString);
-            try pub?.close();
-            pub = nil;
-            //dish = nil;
-            //try context?.close();
-        }
-        catch{
-            print("DISCONNECT COMMUNICATION error - \(error)");
-            //lastCommunicationError = "\(error)";
-            return false;
-        }
-        return true;
-    }
-    
-    public func newconnection(connectionstr: String, connectionGroup: String, sendTimeout: Int, sendBuffer: Int)->Bool{ // when changing ports or address
-        
-        if (!disconnect()){
-            print("Failed disconnect but not severe error");
-        }
-        
-        if (!connect(connectionstr: connectionstr, connectionGroup: connectionGroup, sendTimeout: sendTimeout, sendBuffer: sendBuffer)){
-            return false;
-        }
-        
-        return true;
-    }
-    
-    public func convertErrno(errorn: Int32) -> String{
-           switch errorn {
-           case EAGAIN:
-               return "EAGAIN - Non-blocking mode was requested and no messages are available at the moment.";
-           case ENOTSUP:
-               return "ENOTSUP - The zmq_recv() operation is not supported by this socket type.";
-           case EFSM:
-               return "EFSM - The zmq_recv() operation cannot be performed on this socket at the moment due to the socket not being in the appropriate state.";
-           case ETERM:
-               return "ETERM - The ØMQ context associated with the specified socket was terminated.";
-           case ENOTSOCK:
-               return "ENOTSOCK - The provided socket was invalid.";
-           case EINTR:
-               return "EINTR - The operation was interrupted by delivery of a signal before a message was available.";
-           case EFAULT:
-               return "EFAULT - The message passed to the function was invalid.";
-           default:
-               return "Not valid errno code";
-           }
-       }
 }
 
 // IOS 14 doesn't allow the app the recieve UDP multicast but there isn't an official API to initate the prompt for these permissions. The class below grants permssion to the app by sending phony packets locally which is stupid but there isn't any other option. Apple's support has said themself that you should send out packets as a temporary workaround.

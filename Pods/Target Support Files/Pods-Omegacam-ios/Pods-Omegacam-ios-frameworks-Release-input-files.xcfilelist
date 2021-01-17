@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios-frameworks.sh
-${BUILT_PRODUCTS_DIR}/SwiftyZeroMQ5/SwiftyZeroMQ5.framework
+${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
