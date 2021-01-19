@@ -9,15 +9,62 @@ import Foundation
 import Network
 import MessagePacker
 
+struct NWStruct{
+    var connection: NWConnection?;
+    var connectionaddress: NWEndpoint.Host = "";
+    var connectionport: NWEndpoint.Port = 0;
+    var isReady: Bool = false;
+}
+
 class communicationClass{
 
     static let obj = communicationClass(); // singleton pattern
-    private init(){ // singleton pattern
-        let permissionObj = LocalNetworkPermissionService();
-        permissionObj.triggerDialog();
-    }
-
     
+    private var radio = NWStruct(); // based off ZeroMQ's RADIO/DISH naming scheme - used for sending data
+    private var dish = NWStruct(); // based off ZeroMQ's RADIO/DISH naming scheme - used for receiving data
+    
+    private init(){ // singleton pattern
+        LocalNetworkPermissionService.obj.triggerDialog();
+    }
+    
+    public func connect(address: String, port: UInt32){
+        radio.connectionaddress = NWEndpoint.Host(address);
+        radio.connectionport = NWEndpoint.Port(String(port))!;
+        
+        radio.connection = NWConnection(host: radio.connectionaddress, port: radio.connectionport, using: .udp);
+        
+        radio.connection?.stateUpdateHandler = { (newState) in
+            switch (newState) {
+            case .ready:
+                print("State: Ready");
+                self.radio.isReady = true;
+            case .setup:
+                print("State: Setup");
+                self.radio.isReady = false;
+            case .cancelled:
+                print("State: Cancelled");
+                self.radio.isReady = false;
+            case .preparing:
+                print("State: Preparing");
+                self.radio.isReady = false;
+            default:
+                print("Unknown state in socket");
+            }
+        }
+        
+        radio.connection?.start(queue: .global());
+    }
+    
+    public func send(_ content: Data, completion: @escaping (Bool, NWError?) -> Void){ // can only be called by radio
+        if (radio.isReady){
+            radio.connection?.send(content: content, completion: NWConnection.SendCompletion.contentProcessed(({ (NWError) in
+                completion(NWError == nil, NWError);
+            })));
+        }
+        else{
+            completion(false, nil);
+        }
+    }
 }
 
 // IOS 14 doesn't allow the app the recieve UDP multicast but there isn't an official API to initate the prompt for these permissions. The class below grants permssion to the app by sending phony packets locally which is stupid but there isn't any other option. Apple's support has said themself that you should send out packets as a temporary workaround.
@@ -26,10 +73,10 @@ class communicationClass{
 //https://stackoverflow.com/q/63940427/6057764
 class LocalNetworkPermissionService {
     
+    static var obj = LocalNetworkPermissionService();
     private let port: UInt16
     private var interfaces: [String] = []
     private var connections: [NWConnection] = []
-    
     
     init() {
         self.port = 12345
@@ -59,7 +106,7 @@ class LocalNetworkPermissionService {
     private func stateUpdateHandler(_ state: NWConnection.State, connection: NWConnection?) {
         switch state {
         case .waiting:
-            let content = "Hello Cruel World!".data(using: .utf8)
+            let content = "nice".data(using: .utf8)
             connection?.send(content: content, completion: .idempotent)
         default:
             break
