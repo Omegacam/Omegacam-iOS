@@ -17,7 +17,7 @@ class communicationClass{
     private var connectionString = "";
     private var topic = "";
     private var context : SwiftyZeroMQ.Context?;
-    private var pub :  SwiftyZeroMQ.Socket?;
+    public var pub :  SwiftyZeroMQ.Socket?;
     
     private init(){ // singleton pattern
         LocalNetworkPermissionService.obj.triggerDialog();
@@ -28,7 +28,7 @@ class communicationClass{
         catch{
             log.addc("Communication Error: Context Creation - \(error)");
         }
-        
+        printVersion();
     }
     
     internal func printVersion(){
@@ -37,9 +37,10 @@ class communicationClass{
         log.add("SwiftyZeroMQ version is \(SwiftyZeroMQ.frameworkVersion)");
     }
     
-    public func connect(connectionstr: String) -> Bool {
+    public func connect(connectionstr: String, connectionTopic: String) -> Bool {
         
         connectionString = connectionstr;
+        topic = connectionTopic;
         
         do{
             pub = try context?.socket(.publish);
@@ -78,11 +79,9 @@ class communicationClass{
             log.add("Failed to disconnect but not severe error");
         }
         
-        if (!connect(connectionstr: connectionstr)){
+        if (!connect(connectionstr: connectionstr, connectionTopic: connectionTopic)){
             return false;
         }
-        
-        topic = connectionTopic;
         
         return true;
         
@@ -90,6 +89,17 @@ class communicationClass{
     
     public func updateTopic(connectionTopic: String){
         topic = connectionTopic;
+    }
+    
+    public func send(s: String) -> Bool{
+        do{
+            try pub?.send(string: s);
+        }
+        catch{
+            log.add("Failed to send data");
+            return false;
+        }
+        return true;
     }
     
     // MARK: SwiftyZeroMQ helper Functions
@@ -228,5 +238,33 @@ class LocalNetworkPermissionService {
             }
     }
     
+    public func getIPAddress() -> String {
+        var address: String?
+        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
+        if getifaddrs(&ifaddr) == 0 {
+            var ptr = ifaddr
+            while ptr != nil {
+                defer { ptr = ptr?.pointee.ifa_next }
+
+                guard let interface = ptr?.pointee else { return "" }
+                let addrFamily = interface.ifa_addr.pointee.sa_family
+                if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
+
+                    // wifi = ["en0"]
+                    // wired = ["en2", "en3", "en4"]
+                    // cellular = ["pdp_ip0","pdp_ip1","pdp_ip2","pdp_ip3"]
+
+                    let name: String = String(cString: (interface.ifa_name))
+                    if  name == "en0" || name == "en2" || name == "en3" || name == "en4" || name == "pdp_ip0" || name == "pdp_ip1" || name == "pdp_ip2" || name == "pdp_ip3" {
+                        var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                        getnameinfo(interface.ifa_addr, socklen_t((interface.ifa_addr.pointee.sa_len)), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST)
+                        address = String(cString: hostname)
+                    }
+                }
+            }
+            freeifaddrs(ifaddr)
+        }
+        return address ?? ""
+    }
     
 }

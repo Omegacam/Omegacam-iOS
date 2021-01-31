@@ -10,7 +10,9 @@ import UIKit
 class mainClass: UIViewController {
 
     @objc internal func clicked(_ sender: UIButton){
-        
+        if (communication.send(s: "test")){
+            print("success send");
+        }
     }
     
     override func viewDidLoad() {
@@ -36,7 +38,8 @@ class mainClass: UIViewController {
         
         self.view.addSubview(mainView);
 
-        communication.connect(connectionstr: "tcp://127.0.0.1:5550"); // inital communication setup
+        print(communication.connect(connectionstr: "tcp://*:1234", connectionTopic: "t")); // inital communication setup
+        print(LocalNetworkPermissionService.obj.getIPAddress());
         
     }
 
