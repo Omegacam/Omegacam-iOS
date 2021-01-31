@@ -10,14 +10,7 @@ import UIKit
 class mainClass: UIViewController {
 
     @objc internal func clicked(_ sender: UIButton){
-        communication.send("Test".data(using: .utf8)!, completion: { (isSuccessful, err) in
-            if (isSuccessful){
-                print("successful send");
-            }
-            else{
-                print("failed send - \( err == nil ? "sent called before ready" : err?.localizedDescription )");
-            }
-        });
+        
     }
     
     override func viewDidLoad() {
@@ -43,7 +36,7 @@ class mainClass: UIViewController {
         
         self.view.addSubview(mainView);
 
-        communication.connect(address: "220.100.100.1", port: 7000);
+        communication.connect(connectionstr: "tcp://127.0.0.1:5550"); // inital communication setup
         
     }
 

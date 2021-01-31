@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C13EB5D5FC638E5ED4BCD91 /* Pods_Omegacam_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C227DB98D8C2E7407B175AE6 /* Pods_Omegacam_iosTests.framework */; };
 		26904D8007837E4D3007158B /* Pods_Omegacam_ios_Omegacam_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EE1F19AF94F51ED9A71144 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */; };
-		3314D08A2596BDF400E03557 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3314D0892596BDF400E03557 /* SwiftPackageProductDependency */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
 		33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A828F82588950F00CE8B4B /* AppUtility.swift */; };
 		33ACEF4B258B245500882601 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
@@ -24,6 +23,8 @@
 		33C149E6256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E7256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E8256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
+		33EF140725C66E9900502335 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF140625C66E9900502335 /* MessagePacker */; };
+		33EF140C25C6716100502335 /* logManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF140B25C6716100502335 /* logManager.swift */; };
 		FEE6D000368583B22259B331 /* Pods_Omegacam_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0C0B16CB3EF0909AC5043A /* Pods_Omegacam_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		33C149D4256CEA6C0093E6AE /* Omegacam_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Omegacam_iosUITests.swift; sourceTree = "<group>"; };
 		33C149D6256CEA6C0093E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C149E5256CEADA0093E6AE /* mainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
+		33EF140B25C6716100502335 /* logManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logManager.swift; sourceTree = "<group>"; };
 		710867894C0E0FF07FDCE0A8 /* Pods-Omegacam-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		7776DD850A621464ED1B81F3 /* Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F1EB21B8E3A9D801A492D5C /* Pods-Omegacam-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3314D08A2596BDF400E03557 /* BuildFile in Frameworks */,
+				33EF140725C66E9900502335 /* MessagePacker in Frameworks */,
 				FEE6D000368583B22259B331 /* Pods_Omegacam_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +118,7 @@
 			children = (
 				33ACEF57258B285F00882601 /* miscellaneous.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
+				33EF140B25C6716100502335 /* logManager.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -219,7 +222,7 @@
 			);
 			name = "Omegacam-ios";
 			packageProductDependencies = (
-				3314D0892596BDF400E03557 /* SwiftPackageProductDependency */,
+				33EF140625C66E9900502335 /* MessagePacker */,
 			);
 			productName = "Omegacam-ios";
 			productReference = 33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */;
@@ -296,7 +299,7 @@
 			);
 			mainGroup = 33C149A6256CEA6A0093E6AE;
 			packageReferences = (
-				3314D0882596BDF400E03557 /* RemoteSwiftPackageReference */,
+				33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */,
 			);
 			productRefGroup = 33C149B0256CEA6A0093E6AE /* Products */;
 			projectDirPath = "";
@@ -449,6 +452,7 @@
 				33C149E6256CEADA0093E6AE /* mainView.swift in Sources */,
 				33ACEF58258B285F00882601 /* miscellaneous.swift in Sources */,
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
+				33EF140C25C6716100502335 /* logManager.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
 				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,
 			);
@@ -789,7 +793,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3314D0882596BDF400E03557 /* RemoteSwiftPackageReference */ = {
+		33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hirotakan/MessagePacker.git";
 			requirement = {
@@ -800,9 +804,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3314D0892596BDF400E03557 /* SwiftPackageProductDependency */ = {
+		33EF140625C66E9900502335 /* MessagePacker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3314D0882596BDF400E03557 /* RemoteSwiftPackageReference */;
+			package = 33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */;
 			productName = MessagePacker;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -7,64 +7,133 @@
 
 import Foundation
 import Network
-//import MessagePacker
-
-struct NWStruct{
-    var connection: NWConnection?;
-    var connectionaddress: NWEndpoint.Host = "";
-    var connectionport: NWEndpoint.Port = 0;
-    var isReady: Bool = false;
-}
+import SwiftyZeroMQ5
+import MessagePacker
 
 class communicationClass{
-
+    
     static let obj = communicationClass(); // singleton pattern
     
-    private var radio = NWStruct(); // based off ZeroMQ's RADIO/DISH naming scheme - used for sending data
-    private var dish = NWStruct(); // based off ZeroMQ's RADIO/DISH naming scheme - used for receiving data
+    private var connectionString = "";
+    private var topic = "";
+    private var context : SwiftyZeroMQ.Context?;
+    private var pub :  SwiftyZeroMQ.Socket?;
     
     private init(){ // singleton pattern
         LocalNetworkPermissionService.obj.triggerDialog();
+        
+        do{
+            context = try SwiftyZeroMQ.Context();
+        }
+        catch{
+            log.addc("Communication Error: Context Creation - \(error)");
+        }
+        
     }
     
-    public func connect(address: String, port: UInt32){
-        radio.connectionaddress = NWEndpoint.Host(address);
-        radio.connectionport = NWEndpoint.Port(String(port))!;
-        
-        radio.connection = NWConnection(host: radio.connectionaddress, port: radio.connectionport, using: .udp);
-        
-        radio.connection?.stateUpdateHandler = { (newState) in
-            switch (newState) {
-            case .ready:
-                print("State: Ready");
-                self.radio.isReady = true;
-            case .setup:
-                print("State: Setup");
-                self.radio.isReady = false;
-            case .cancelled:
-                print("State: Cancelled");
-                self.radio.isReady = false;
-            case .preparing:
-                print("State: Preparing");
-                self.radio.isReady = false;
-            default:
-                print("Unknown state in socket");
-            }
-        }
-        
-        radio.connection?.start(queue: .global());
+    internal func printVersion(){
+        let (major, minor, patch, _) = SwiftyZeroMQ.version;
+        log.add("ZeroMQ library version is \(major).\(minor) with patch level .\(patch)");
+        log.add("SwiftyZeroMQ version is \(SwiftyZeroMQ.frameworkVersion)");
     }
     
-    public func send(_ content: Data, completion: @escaping (Bool, NWError?) -> Void){ // can only be called by radio
-        if (radio.isReady){
-            radio.connection?.send(content: content, completion: NWConnection.SendCompletion.contentProcessed(({ (NWError) in
-                completion(NWError == nil, NWError);
-            })));
+    public func connect(connectionstr: String) -> Bool {
+        
+        connectionString = connectionstr;
+        
+        do{
+            pub = try context?.socket(.publish);
+            
+            try pub?.bind(connectionString);
+            //try pub?.setRecvTimeout(Int32(recvReconnect)); // in ms
+            //try pub?.setRecvBufferSize(Int32(recvBuffer));
         }
-        else{
-            completion(false, nil);
+        catch{
+            log.addc("CONNECT COMMUNICATION error - \(error)");
+            //lastCommunicationError = "\(error)";
+            return false;
+        }
+        return true;
+        
+    }
+    
+    public func disconnect() -> Bool {
+        
+        do{
+            try pub?.close();
+            pub = nil;
+        }
+        catch{
+            log.add("DISCONNECT COMMUNICATION error - \(error)");
+            pub = nil;
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public func newconnection(connectionstr: String, connectionTopic: String) -> Bool {
+        
+        if (!disconnect()){
+            log.add("Failed to disconnect but not severe error");
+        }
+        
+        if (!connect(connectionstr: connectionstr)){
+            return false;
+        }
+        
+        topic = connectionTopic;
+        
+        return true;
+        
+    }
+    
+    public func updateTopic(connectionTopic: String){
+        topic = connectionTopic;
+    }
+    
+    // MARK: SwiftyZeroMQ helper Functions
+    public static func checkValidProtocol(communicationProtocol: String) -> Bool{
+        switch communicationProtocol {
+        case "ipc":
+            return SwiftyZeroMQ.has(.ipc);
+        case "pgm":
+            return SwiftyZeroMQ.has(.pgm);
+        case "tipc":
+            return SwiftyZeroMQ.has(.tipc);
+        case "norm":
+            return SwiftyZeroMQ.has(.norm);
+        case "curve":
+            return SwiftyZeroMQ.has(.curve);
+        case "gssapi":
+            return SwiftyZeroMQ.has(.gssapi);
+        default:
+            print("not valid protocol for checking")
+            return false;
         }
     }
+    
+    public static func convertErrno(errorn: Int32) -> String{
+        switch errorn {
+        case EAGAIN:
+            return "EAGAIN - Non-blocking mode was requested and no messages are available at the moment.";
+        case ENOTSUP:
+            return "ENOTSUP - The zmq_recv() operation is not supported by this socket type.";
+        case EFSM:
+            return "EFSM - The zmq_recv() operation cannot be performed on this socket at the moment due to the socket not being in the appropriate state.";
+        case ETERM:
+            return "ETERM - The ØMQ context associated with the specified socket was terminated.";
+        case ENOTSOCK:
+            return "ENOTSOCK - The provided socket was invalid.";
+        case EINTR:
+            return "EINTR - The operation was interrupted by delivery of a signal before a message was available.";
+        case EFAULT:
+            return "EFAULT - The message passed to the function was invalid.";
+        default:
+            return "Not valid errno code";
+        }
+    }
+    
 }
 
 // IOS 14 doesn't allow the app the recieve UDP multicast but there isn't an official API to initate the prompt for these permissions. The class below grants permssion to the app by sending phony packets locally which is stupid but there isn't any other option. Apple's support has said themself that you should send out packets as a temporary workaround.
@@ -159,5 +228,5 @@ class LocalNetworkPermissionService {
             }
     }
     
-
+    
 }
