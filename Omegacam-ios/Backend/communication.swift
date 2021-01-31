@@ -7,7 +7,7 @@
 
 import Foundation
 import Network
-import MessagePacker
+//import MessagePacker
 
 struct NWStruct{
     var connection: NWConnection?;
