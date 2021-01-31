@@ -1,20 +1,22 @@
 PODS:
-  - Socket.IO-Client-Swift (15.2.0):
-    - Starscream (~> 3.1)
-  - Starscream (3.1.1)
+  - SwiftyZeroMQ5 (1.3.0)
 
 DEPENDENCIES:
-  - Socket.IO-Client-Swift
+  - SwiftyZeroMQ5 (from `https://github.com/Omegacam/SwiftyZeroMQ5.git`, branch `master`)
 
-SPEC REPOS:
-  trunk:
-    - Socket.IO-Client-Swift
-    - Starscream
+EXTERNAL SOURCES:
+  SwiftyZeroMQ5:
+    :branch: master
+    :git: https://github.com/Omegacam/SwiftyZeroMQ5.git
+
+CHECKOUT OPTIONS:
+  SwiftyZeroMQ5:
+    :commit: cae7dae3b4b355ec0d8eddd6e10291745f39b3f8
+    :git: https://github.com/Omegacam/SwiftyZeroMQ5.git
 
 SPEC CHECKSUMS:
-  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SwiftyZeroMQ5: 2eef9b705384a9a94c50484ad01b503e7cce0d24
 
-PODFILE CHECKSUM: 858c1ce8a3f4b092cb3fe38f7f8c7b7b717882f9
+PODFILE CHECKSUM: b8d3b066027042a44595f7acaeb7318719f73e8a
 
 COCOAPODS: 1.9.3
