@@ -38,7 +38,7 @@ class mainClass: UIViewController {
         
         self.view.addSubview(mainView);
 
-        print(communication.connect(connectionstr: "tcp://*:1234", connectionTopic: "t")); // inital communication setup
+        print(communication.connect(connectionstr: "tcp://*:1234")); // inital communication setup
         print(LocalNetworkPermissionService.obj.getIPAddress());
         
     }

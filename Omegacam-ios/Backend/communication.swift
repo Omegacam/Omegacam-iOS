@@ -15,7 +15,6 @@ class communicationClass{
     static let obj = communicationClass(); // singleton pattern
     
     private var connectionString = "";
-    private var topic = "";
     private var context : SwiftyZeroMQ.Context?;
     public var pub :  SwiftyZeroMQ.Socket?;
     
@@ -37,10 +36,9 @@ class communicationClass{
         log.add("SwiftyZeroMQ version is \(SwiftyZeroMQ.frameworkVersion)");
     }
     
-    public func connect(connectionstr: String, connectionTopic: String) -> Bool {
+    public func connect(connectionstr: String) -> Bool {
         
         connectionString = connectionstr;
-        topic = connectionTopic;
         
         do{
             pub = try context?.socket(.publish);
@@ -73,22 +71,18 @@ class communicationClass{
         return true;
     }
     
-    public func newconnection(connectionstr: String, connectionTopic: String) -> Bool {
+    public func newconnection(connectionstr: String) -> Bool {
         
         if (!disconnect()){
             log.add("Failed to disconnect but not severe error");
         }
         
-        if (!connect(connectionstr: connectionstr, connectionTopic: connectionTopic)){
+        if (!connect(connectionstr: connectionstr)){
             return false;
         }
         
         return true;
         
-    }
-    
-    public func updateTopic(connectionTopic: String){
-        topic = connectionTopic;
     }
     
     public func send(s: String) -> Bool{
