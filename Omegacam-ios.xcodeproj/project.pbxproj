@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1C13EB5D5FC638E5ED4BCD91 /* Pods_Omegacam_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C227DB98D8C2E7407B175AE6 /* Pods_Omegacam_iosTests.framework */; };
 		26904D8007837E4D3007158B /* Pods_Omegacam_ios_Omegacam_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EE1F19AF94F51ED9A71144 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */; };
+		33798C4325CD197500E10EAF /* cameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4225CD197500E10EAF /* cameraManager.swift */; };
+		33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4825CD211800E10EAF /* mainViewUI.swift */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
 		33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A828F82588950F00CE8B4B /* AppUtility.swift */; };
 		33ACEF4B258B245500882601 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33798C4225CD197500E10EAF /* cameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraManager.swift; sourceTree = "<group>"; };
+		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
 		337FE908258B2B290051122F /* communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communication.swift; sourceTree = "<group>"; };
 		33A828F82588950F00CE8B4B /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		33ACEF4A258B245500882601 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../Assets; sourceTree = "<group>"; };
@@ -105,10 +109,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33ACEF5C258B286700882601 /* UI */ = {
+		33798C4125CD192F00E10EAF /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				33798C4225CD197500E10EAF /* cameraManager.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		33798C4725CD210A00E10EAF /* mainView */ = {
 			isa = PBXGroup;
 			children = (
 				33C149E5256CEADA0093E6AE /* mainView.swift */,
+				33798C4825CD211800E10EAF /* mainViewUI.swift */,
+			);
+			path = mainView;
+			sourceTree = "<group>";
+		};
+		33ACEF5C258B286700882601 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				33798C4725CD210A00E10EAF /* mainView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -116,6 +137,7 @@
 		33ACEF5D258B287700882601 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				33798C4125CD192F00E10EAF /* Camera */,
 				33ACEF57258B285F00882601 /* miscellaneous.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
 				33EF140B25C6716100502335 /* logManager.swift */,
@@ -450,8 +472,10 @@
 			files = (
 				33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */,
 				33C149E6256CEADA0093E6AE /* mainView.swift in Sources */,
+				33798C4325CD197500E10EAF /* cameraManager.swift in Sources */,
 				33ACEF58258B285F00882601 /* miscellaneous.swift in Sources */,
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
+				33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */,
 				33EF140C25C6716100502335 /* logManager.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
 				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,

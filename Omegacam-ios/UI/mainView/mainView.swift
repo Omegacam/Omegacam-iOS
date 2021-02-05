@@ -10,7 +10,7 @@ import UIKit
 class mainClass: UIViewController {
 
     @objc internal func clicked(_ sender: UIButton){
-        if (communication.send(s: "test")){
+        if (communication.send("test".data(using: .utf8)!)){
             print("success send");
         }
     }
@@ -18,7 +18,7 @@ class mainClass: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        let containerSize = AppUtility.getCurrentScreenSize();
+        /*let containerSize = AppUtility.getCurrentScreenSize();
         let mainViewFrame = CGRect(x: 0, y: 0, width: containerSize.width, height: containerSize.height);
         let mainView = UIView(frame: mainViewFrame);
         
@@ -36,13 +36,20 @@ class mainClass: UIViewController {
         
         mainView.addSubview(button);
         
-        self.view.addSubview(mainView);
-
-        print(communication.connect(connectionstr: "tcp://*:1234")); // inital communication setup
-        print(LocalNetworkPermissionService.obj.getIPAddress());
+        self.view.addSubview(mainView);*/
         
+        if (communication.connect(connectionstr: "tcp://*:1234")){
+            print(LocalNetworkPermissionService.obj.getIPAddress());
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorView), name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
+            NotificationCenter.default.addObserver(self, selector: #selector(self.showCameraView), name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
+        
+        }
+        else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
+        }
     }
 
-
+    
 }
 

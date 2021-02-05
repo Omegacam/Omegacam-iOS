@@ -85,9 +85,9 @@ class communicationClass{
         
     }
     
-    public func send(s: String) -> Bool{
+    public func send(_ s: Data) -> Bool{
         do{
-            try pub?.send(string: s);
+            try pub?.send(data: s);
         }
         catch{
             log.add("Failed to send data");
