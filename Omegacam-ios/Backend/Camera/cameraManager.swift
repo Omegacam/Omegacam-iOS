@@ -9,13 +9,15 @@ import Foundation
 import UIKit
 import AVFoundation
 
+// https://medium.com/flawless-app-stories/capture-photo-using-avcapturesession-in-swift-842bb95751f0
+
 class cameraManager{
     static let obj = cameraManager(); // singleton
     //private var captureSession : AVCaptureSession?;
     private let photoOutput = AVCapturePhotoOutput();
     
     private init(){ // singleton
-        
+        //print("init")
         switch AVCaptureDevice.authorizationStatus(for: .video){
         
         case .authorized:
@@ -60,17 +62,19 @@ class cameraManager{
                 handleDismiss();
                 return;
             }
-            
+        
             if (captureSession.canAddOutput(photoOutput)){
                 captureSession.addOutput(photoOutput);
             }
             
             let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession);
             let dataDict = ["cameraLayer" : cameraLayer];
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: dataDict);
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
             
             captureSession.startRunning();
             
+        }
+        else{
         }
     }
     

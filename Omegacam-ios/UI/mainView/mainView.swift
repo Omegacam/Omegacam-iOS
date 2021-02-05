@@ -43,9 +43,10 @@ class mainClass: UIViewController {
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorView), name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
             NotificationCenter.default.addObserver(self, selector: #selector(self.showCameraView), name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
-        
+            camera.self;
         }
         else{
+            log.addc("Failed to establish communication connection");
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
         }
     }
