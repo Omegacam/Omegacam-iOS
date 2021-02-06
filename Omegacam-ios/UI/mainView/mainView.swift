@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class mainClass: UIViewController {
+    
+    internal var cameraPreviewLayer : AVCaptureVideoPreviewLayer? = nil;
 
     @objc internal func clicked(_ sender: UIButton){
         if (communication.send("test".data(using: .utf8)!)){
@@ -43,7 +46,9 @@ class mainClass: UIViewController {
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorView), name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
             NotificationCenter.default.addObserver(self, selector: #selector(self.showCameraView), name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
-            camera.self;
+            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceRotationHandler), name: UIDevice.orientationDidChangeNotification, object: nil);
+            
+            camera.self; // instigate init of static obj
         }
         else{
             log.addc("Failed to establish communication connection");
@@ -51,6 +56,11 @@ class mainClass: UIViewController {
         }
     }
 
+    deinit{
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil);
+    }
     
 }
 

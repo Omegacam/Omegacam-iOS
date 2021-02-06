@@ -10,11 +10,24 @@ import UIKit
 import AVFoundation
 
 extension mainClass{
+    
+    @objc func deviceRotationHandler(){
+        cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
+        cameraPreviewLayer?.frame = self.view.frame;
+    }
+    
     @objc func showErrorView(_ notification: NSNotification){
         print("error");
     }
     
     @objc func showCameraView(_ notification: NSNotification){
+        
+        for views in self.view.subviews{
+            views.removeFromSuperview();
+        }
+        
+        self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
+        
         if let dict = notification.userInfo as NSDictionary?{
             if let cameraLayer = dict["cameraLayer"] as? AVCaptureVideoPreviewLayer{
                 
@@ -24,15 +37,25 @@ extension mainClass{
                 cameraLayer.videoGravity = .resizeAspectFill;
                 self.view.layer.addSublayer(cameraLayer);
                 
+                self.cameraPreviewLayer = cameraLayer;
+                
             }
             else{
                 log.addc("Error in cameraLayer cast in showCameraView");
-                showErrorView(NSNotification());
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
             }
+            
         }
         else{
             log.addc("Error in dictionary cast in showCameraView");
-            showErrorView(NSNotification());
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
         }
+        
+        AppUtility.lockOrientation(.all);
+        
     }
+    
+    
+    
+    
 }

@@ -68,7 +68,8 @@ class cameraManager{
             }
             
             let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession);
-            let dataDict = ["cameraLayer" : cameraLayer];
+            var dataDict : [String : Any] = [:];
+            dataDict["cameraLayer"] = cameraLayer;
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
             
             captureSession.startRunning();
