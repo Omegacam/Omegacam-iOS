@@ -13,7 +13,7 @@ extension mainClass{
     
     @objc func deviceRotationHandler(){
         if (UIDevice.current.orientation != .unknown && UIDevice.current.orientation != .portraitUpsideDown && UIDevice.current.orientation != .faceDown && UIDevice.current.orientation != .faceUp){
-            
+            //print("rotation handler")
             // update mainView
             mainView.removeFromSuperview();
             if (UIDevice.current.orientation.isPortrait){
@@ -41,21 +41,37 @@ extension mainClass{
     @objc func showErrorView(_ notification: NSNotification){
         
         isShowingLogs = true;
-        log.add("Create an issue at https://github.com/Omegacam/Omegacam-iOS for help or more information. Make sure to include the above logs.");
+        //log.add("Create an issue at https://github.com/Omegacam/Omegacam-iOS for help or more information. Make sure to include the above logs.");
         
         for views in mainView.subviews{
             views.removeFromSuperview();
         }
         
-        self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
+        // lock orientation to show errors
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
+        //NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil);
         
-        /*let logScrollViewFrame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height);
+        //self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
+        
+        mainView.backgroundColor = BackgroundColor;
+        
+        let titleLabelHeight = CGFloat(30);
+        let titleLabelFrame = CGRect(x: 0, y: 15, width: mainView.frame.width, height: titleLabelHeight);
+        let titleLabel = UILabel(frame: titleLabelFrame);
+        titleLabel.text = "Logs";
+        titleLabel.font = UIFont(name: "SFProDisplay-Semibold", size: 25);
+        titleLabel.textAlignment = .center;
+        
+        mainView.addSubview(titleLabel);
+        
+        let logScrollViewFrame = CGRect(x: 0, y: titleLabelFrame.maxY, width: mainView.frame.width, height: mainView.frame.height - titleLabelFrame.maxY);
         let logScrollView = UIScrollView(frame: logScrollViewFrame);
-        logScrollView.backgroundColor = BackgroundColor;
         
-        let logBuffer = log.getBuffer();
+        var logBuffer = log.getBuffer();
+        logBuffer.append("Create an issue at https://github.com/Omegacam/Omegacam-iOS for help or more information. Make sure to include the above logs.");
         let logEntryPadding = CGFloat(20);
-        var nextY = CGFloat(logEntryPadding);
+        let logEntryVerticalPadding = CGFloat(10);
+        var nextY = CGFloat(logEntryVerticalPadding);
         for logEntryString in logBuffer{
             
             let logEntryFont = UIFont(name: "SFProDisplay-Semibold", size: 15)!;
@@ -67,14 +83,15 @@ extension mainClass{
             logEntry.text = logEntryString;
             logEntry.textAlignment = .center;
             logEntry.numberOfLines = 0;
+            logEntry.textColor = InverseBackgroundColor;
             
-            nextY += logEntryHeight + logEntryPadding;
+            nextY += logEntryHeight + logEntryVerticalPadding;
             
             logScrollView.addSubview(logEntry);
         }
         logScrollView.contentSize = CGSize(width: logScrollViewFrame.width, height: nextY);
         
-        mainView.addSubview(logScrollView);*/
+        mainView.addSubview(logScrollView);
         //mainView.backgroundColor = UIColor.white;
     }
     
@@ -101,9 +118,9 @@ extension mainClass{
                 return;
             }
             
-            if let videoDataOutput = dict["videoDataOutput"] as? AVError{
+            if let videoDataOutput = dict["videoDataOutput"] as? AVCaptureVideoDataOutput{
                 
-                //cameraVideoDataOutput = videoDataOutput;
+                cameraVideoDataOutput = videoDataOutput;
                 
             }
             else{
