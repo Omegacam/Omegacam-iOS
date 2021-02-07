@@ -24,7 +24,7 @@ class mainClass: UIViewController {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
         
         if (communication.connect(connectionstr: "tcp://*:1234")){
-            print(LocalNetworkPermissionService.obj.getIPAddress());
+            log.add(LocalNetworkPermissionService.obj.getIPAddress());
             
             AppUtility.lockOrientation(.portrait);
             

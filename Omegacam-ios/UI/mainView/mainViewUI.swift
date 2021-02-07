@@ -146,9 +146,19 @@ extension mainClass{
         for views in mainView.subviews{
             views.removeFromSuperview();
         }
-
+        //mainView.backgroundColor = UIColor.gray;
+        let ipLabelText = LocalNetworkPermissionService.obj.getIPAddress();
+        let ipLabelFont = UIFont(name: "SFProDisplay-Semibold", size: 15)!;
+        let ipLabelWidth = mainView.frame.width;
+        let ipLabelHeight = ipLabelText.getHeight(withConstrainedWidth: ipLabelWidth, font: ipLabelFont);
+        let ipLabelFrame = CGRect(x: 0, y: mainView.frame.height - ipLabelHeight, width: ipLabelWidth, height: ipLabelHeight);
+        let ipLabel = UILabel(frame: ipLabelFrame);
+        ipLabel.text = ipLabelText;
+        ipLabel.font = ipLabelFont;
+        ipLabel.textAlignment = .center;
+        ipLabel.textColor = .black;
         
-        mainView.backgroundColor = UIColor.gray;
+        mainView.addSubview(ipLabel);
         
     }
     
