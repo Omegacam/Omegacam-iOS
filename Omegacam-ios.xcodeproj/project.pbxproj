@@ -13,6 +13,20 @@
 		33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4825CD211800E10EAF /* mainViewUI.swift */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
 		33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A828F82588950F00CE8B4B /* AppUtility.swift */; };
+		33AB537E25CF81FC002734A3 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
+		33AB538225CF81FD002734A3 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
+		33AB53A425CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A125CF8222002734A3 /* SFProDisplay-Regular.ttf */; };
+		33AB53A525CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A125CF8222002734A3 /* SFProDisplay-Regular.ttf */; };
+		33AB53A625CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A125CF8222002734A3 /* SFProDisplay-Regular.ttf */; };
+		33AB53A725CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A225CF8222002734A3 /* SFProDisplay-Black.ttf */; };
+		33AB53A825CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A225CF8222002734A3 /* SFProDisplay-Black.ttf */; };
+		33AB53A925CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A225CF8222002734A3 /* SFProDisplay-Black.ttf */; };
+		33AB53AA25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A325CF8222002734A3 /* SFProDisplay-Semibold.ttf */; };
+		33AB53AB25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A325CF8222002734A3 /* SFProDisplay-Semibold.ttf */; };
+		33AB53AC25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33AB53A325CF8222002734A3 /* SFProDisplay-Semibold.ttf */; };
+		33AB53B425CF8385002734A3 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB53B325CF8385002734A3 /* extensions.swift */; };
+		33AB53B525CF8385002734A3 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB53B325CF8385002734A3 /* extensions.swift */; };
+		33AB53B625CF8385002734A3 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB53B325CF8385002734A3 /* extensions.swift */; };
 		33ACEF4B258B245500882601 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 33ACEF4A258B245500882601 /* Assets */; };
 		33ACEF58258B285F00882601 /* miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACEF57258B285F00882601 /* miscellaneous.swift */; };
 		33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149B2256CEA6A0093E6AE /* AppDelegate.swift */; };
@@ -52,6 +66,10 @@
 		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
 		337FE908258B2B290051122F /* communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communication.swift; sourceTree = "<group>"; };
 		33A828F82588950F00CE8B4B /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		33AB53A125CF8222002734A3 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Regular.ttf"; path = "Assets/SFProDisplay-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		33AB53A225CF8222002734A3 /* SFProDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Black.ttf"; path = "Assets/SFProDisplay-Black.ttf"; sourceTree = SOURCE_ROOT; };
+		33AB53A325CF8222002734A3 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Semibold.ttf"; path = "Assets/SFProDisplay-Semibold.ttf"; sourceTree = SOURCE_ROOT; };
+		33AB53B325CF8385002734A3 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		33ACEF4A258B245500882601 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../Assets; sourceTree = "<group>"; };
 		33ACEF57258B285F00882601 /* miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = miscellaneous.swift; sourceTree = "<group>"; };
 		33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Omegacam-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,14 +127,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33798C4125CD192F00E10EAF /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				33798C4225CD197500E10EAF /* cameraManager.swift */,
-			);
-			path = Camera;
-			sourceTree = "<group>";
-		};
 		33798C4725CD210A00E10EAF /* mainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 		33ACEF5C258B286700882601 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				33AB53B325CF8385002734A3 /* extensions.swift */,
 				33798C4725CD210A00E10EAF /* mainView */,
 			);
 			path = UI;
@@ -137,7 +148,7 @@
 		33ACEF5D258B287700882601 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				33798C4125CD192F00E10EAF /* Camera */,
+				33798C4225CD197500E10EAF /* cameraManager.swift */,
 				33ACEF57258B285F00882601 /* miscellaneous.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
 				33EF140B25C6716100502335 /* logManager.swift */,
@@ -180,6 +191,9 @@
 				33C149C0256CEA6C0093E6AE /* Info.plist */,
 				33C149BB256CEA6C0093E6AE /* Assets.xcassets */,
 				33ACEF4A258B245500882601 /* Assets */,
+				33AB53A225CF8222002734A3 /* SFProDisplay-Black.ttf */,
+				33AB53A125CF8222002734A3 /* SFProDisplay-Regular.ttf */,
+				33AB53A325CF8222002734A3 /* SFProDisplay-Semibold.ttf */,
 			);
 			path = "Omegacam-ios";
 			sourceTree = "<group>";
@@ -341,7 +355,10 @@
 			files = (
 				33C149BF256CEA6C0093E6AE /* LaunchScreen.storyboard in Resources */,
 				33ACEF4B258B245500882601 /* Assets in Resources */,
+				33AB53AA25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */,
+				33AB53A725CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */,
 				33C149BC256CEA6C0093E6AE /* Assets.xcassets in Resources */,
+				33AB53A425CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */,
 				33C149BA256CEA6A0093E6AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +367,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33AB537E25CF81FC002734A3 /* Assets in Resources */,
+				33AB53AB25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */,
+				33AB53A525CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */,
+				33AB53A825CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +378,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33AB538225CF81FD002734A3 /* Assets in Resources */,
+				33AB53AC25CF8222002734A3 /* SFProDisplay-Semibold.ttf in Resources */,
+				33AB53A625CF8222002734A3 /* SFProDisplay-Regular.ttf in Resources */,
+				33AB53A925CF8222002734A3 /* SFProDisplay-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +500,7 @@
 				33798C4325CD197500E10EAF /* cameraManager.swift in Sources */,
 				33ACEF58258B285F00882601 /* miscellaneous.swift in Sources */,
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
+				33AB53B425CF8385002734A3 /* extensions.swift in Sources */,
 				33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */,
 				33EF140C25C6716100502335 /* logManager.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
@@ -488,6 +514,7 @@
 			files = (
 				33C149CA256CEA6C0093E6AE /* Omegacam_iosTests.swift in Sources */,
 				33C149E7256CEADA0093E6AE /* mainView.swift in Sources */,
+				33AB53B525CF8385002734A3 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +524,7 @@
 			files = (
 				33C149D5256CEA6C0093E6AE /* Omegacam_iosUITests.swift in Sources */,
 				33C149E8256CEADA0093E6AE /* mainView.swift in Sources */,
+				33AB53B625CF8385002734A3 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

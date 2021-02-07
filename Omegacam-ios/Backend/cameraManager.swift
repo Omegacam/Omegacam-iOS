@@ -14,7 +14,6 @@ import AVFoundation
 class cameraManager{
     static let obj = cameraManager(); // singleton
     //private var captureSession : AVCaptureSession?;
-    private let photoOutput = AVCapturePhotoOutput();
     
     private init(){ // singleton
         setup();
@@ -60,14 +59,21 @@ class cameraManager{
                 return;
             }
         
-            if (captureSession.canAddOutput(photoOutput)){
-                captureSession.addOutput(photoOutput);
+            
+            let videoDataOutput = AVCaptureVideoDataOutput();
+            if (captureSession.canAddOutput(videoDataOutput)){
+                captureSession.addOutput(videoDataOutput);
+            }
+            else{
+                handleDismiss("Unable to create data stream from camera");
+                return;
             }
             
             let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession);
             cameraLayer.connection?.videoOrientation = .portrait;
             var dataDict : [String : Any] = [:];
             dataDict["cameraLayer"] = cameraLayer;
+            dataDict["videoDataOutput"] = videoDataOutput;
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
             
             captureSession.startRunning();

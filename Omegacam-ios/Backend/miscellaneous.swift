@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// SFProDisplay-Regular, SFProDisplay-Semibold, SFProDisplay-Black
+
 // shared colors from assets
 
 let AccentColor = UIColor(named: "AccentColor")!;
