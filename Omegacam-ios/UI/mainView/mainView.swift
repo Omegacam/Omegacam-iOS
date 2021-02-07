@@ -41,8 +41,12 @@ class mainClass: UIViewController {
         
         self.view.addSubview(mainView);*/
         
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
+        
         if (communication.connect(connectionstr: "tcp://*:1234")){
             print(LocalNetworkPermissionService.obj.getIPAddress());
+            
+            AppUtility.lockOrientation(.portrait);
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorView), name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
             NotificationCenter.default.addObserver(self, selector: #selector(self.showCameraView), name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);

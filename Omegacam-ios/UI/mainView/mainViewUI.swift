@@ -12,7 +12,9 @@ import AVFoundation
 extension mainClass{
     
     @objc func deviceRotationHandler(){
-        cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
+        if (UIDevice.current.orientation != .portraitUpsideDown && UIDevice.current.orientation != .faceDown && UIDevice.current.orientation != .faceUp && UIDevice.current.orientation != .unknown){
+            cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
+        }
         cameraPreviewLayer?.frame = self.view.frame;
     }
     
@@ -35,6 +37,7 @@ extension mainClass{
                 
                 cameraLayer.frame = self.view.frame;
                 cameraLayer.videoGravity = .resizeAspectFill;
+                cameraLayer.connection?.videoOrientation = .portrait;
                 self.view.layer.addSublayer(cameraLayer);
                 
                 self.cameraPreviewLayer = cameraLayer;
