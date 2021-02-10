@@ -146,7 +146,7 @@ extension mainClass{
         for views in mainView.subviews{
             views.removeFromSuperview();
         }
-        //mainView.backgroundColor = UIColor.gray;
+        /*//mainView.backgroundColor = UIColor.gray;
         let ipLabelText = LocalNetworkPermissionService.obj.getIPAddress();
         let ipLabelFont = UIFont(name: "SFProDisplay-Semibold", size: 15)!;
         let ipLabelWidth = mainView.frame.width;
@@ -158,11 +158,52 @@ extension mainClass{
         ipLabel.textAlignment = .center;
         ipLabel.textColor = .black;
         
-        mainView.addSubview(ipLabel);
+        mainView.addSubview(ipLabel);*/
+        
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan));
+        mainView.addGestureRecognizer(panGesture);
+        mainView.isUserInteractionEnabled = true;
+        
+        renderSideMenu();
         
     }
     
+    func renderSideMenu(){
+        let sideMenuWidth = mainView.frame.width / (UIDevice.current.orientation.isLandscape ? 3 : 1.5);
+        let sideMenuFrame = CGRect(x: mainView.frame.width, y: 0, width: sideMenuWidth, height: mainView.frame.height);
+        sideMenuView = UIView(frame: sideMenuFrame);
+        sideMenuView.backgroundColor = BackgroundColor;
+        
+        
+        
+        mainView.addSubview(sideMenuView);
+    }
     
     
+    @objc func handlePan(_ sender: UIPanGestureRecognizer){
+        //print("translation - \(sender.translation(in: self.view))")
+        if (sender.state == .began || sender.state == .changed){
+            
+            let translation = sender.translation(in: self.view);
+            sideMenuView.frame = CGRect(x: min(max(sideMenuView.frame.minX + translation.x, mainView.frame.width - sideMenuView.frame.width), mainView.frame.width), y: 0, width: sideMenuView.frame.width, height: sideMenuView.frame.height);
+            
+            sender.setTranslation(.zero, in: self.view);
+        }
+        else if (sender.state == .ended){
+            
+            let thresholdPercent : CGFloat = 0.5;
+            if (sideMenuView.frame.minX <= mainView.frame.width - (sideMenuView.frame.width * thresholdPercent)){ // pulled far enough, animate pull out
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.sideMenuView.frame = CGRect(x: self.mainView.frame.width - self.sideMenuView.frame.width, y: 0, width: self.sideMenuView.frame.width, height: self.sideMenuView.frame.height);
+                });
+            }
+            else{
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.sideMenuView.frame = CGRect(x: self.mainView.frame.width, y: 0, width: self.sideMenuView.frame.width, height: self.sideMenuView.frame.height);
+                });
+            }
+            
+        }
+    }
     
 }
