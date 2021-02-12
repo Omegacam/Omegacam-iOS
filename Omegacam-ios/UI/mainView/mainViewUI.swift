@@ -174,7 +174,49 @@ extension mainClass{
         sideMenuView = UIView(frame: sideMenuFrame);
         sideMenuView.backgroundColor = BackgroundColor;
         
+        sideMenuView.setRoundedEdge(corners: [.topLeft], radius: 10);
         
+        let sideMenuScrollViewFrame = CGRect(x: 0, y: 0, width: sideMenuFrame.width, height: sideMenuFrame.height);
+        let sideMenuScrollView = UIScrollView(frame: sideMenuScrollViewFrame);
+        
+        // content inside scrollview
+        
+        let verticalPadding = CGFloat(20);
+        var nextY = CGFloat(verticalPadding);
+        
+        let titleLabelText = "Omegacam iOS";
+        let titleLabelFont = UIFont(name: "SFProDisplay-Semibold", size: 20)!;
+        let titleLabelWidth = sideMenuScrollViewFrame.width;
+        let titleLabelHeight = titleLabelText.getHeight(withConstrainedWidth: titleLabelWidth, font: titleLabelFont)
+        let titleLabelFrame = CGRect(x: 0, y: nextY, width: titleLabelWidth, height: titleLabelHeight);
+        let titleLabel = UILabel(frame: titleLabelFrame);
+        titleLabel.text = titleLabelText;
+        titleLabel.font = titleLabelFont;
+        titleLabel.textAlignment = .center;
+        titleLabel.textColor = InverseBackgroundColor;
+        
+        sideMenuScrollView.addSubview(titleLabel);
+        nextY += titleLabelFrame.height + verticalPadding;
+        
+        let ipLabelText = LocalNetworkPermissionService.obj.getIPAddress();
+        let ipLabelFont = UIFont(name: "SFProDisplay-Semibold", size: 15)!;
+        let ipLabelWidth = sideMenuScrollViewFrame.width;
+        let ipLabelHeight = ipLabelText.getHeight(withConstrainedWidth: ipLabelWidth, font: ipLabelFont);
+        let ipLabelFrame = CGRect(x: 0, y: nextY, width: ipLabelWidth, height: ipLabelHeight);
+        let ipLabel = UILabel(frame: ipLabelFrame);
+        ipLabel.text = ipLabelText;
+        ipLabel.font = ipLabelFont;
+        ipLabel.textAlignment = .center;
+        ipLabel.textColor = InverseBackgroundColor;
+        
+        sideMenuScrollView.addSubview(ipLabel);
+        nextY += ipLabelFrame.height + verticalPadding;
+        
+        //
+        
+        sideMenuScrollView.contentSize = CGSize(width: sideMenuFrame.width, height: nextY);
+        
+        sideMenuView.addSubview(sideMenuScrollView);
         
         mainView.addSubview(sideMenuView);
     }

@@ -12,6 +12,7 @@ import AVFoundation
 // https://medium.com/flawless-app-stories/capture-photo-using-avcapturesession-in-swift-842bb95751f0
 
 class cameraManager{
+
     static let obj = cameraManager(); // singleton
     //private var captureSession : AVCaptureSession?;
     
@@ -87,6 +88,10 @@ class cameraManager{
     private func handleDismiss(_ s: String){
         log.addc(s);
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
+    }
+    
+    public func captureImageData() -> Data{
+        return Data();
     }
     
 }
