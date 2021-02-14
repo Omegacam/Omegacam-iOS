@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1C13EB5D5FC638E5ED4BCD91 /* Pods_Omegacam_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C227DB98D8C2E7407B175AE6 /* Pods_Omegacam_iosTests.framework */; };
 		26904D8007837E4D3007158B /* Pods_Omegacam_ios_Omegacam_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EE1F19AF94F51ED9A71144 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */; };
+		33092F1525D8B65700008B9B /* dataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33092F1425D8B65700008B9B /* dataManager.swift */; };
 		33798C4325CD197500E10EAF /* cameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4225CD197500E10EAF /* cameraManager.swift */; };
 		33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4825CD211800E10EAF /* mainViewUI.swift */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
@@ -39,7 +40,6 @@
 		33C149E6256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E7256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E8256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
-		33EF140725C66E9900502335 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 33EF140625C66E9900502335 /* MessagePacker */; };
 		33EF140C25C6716100502335 /* logManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF140B25C6716100502335 /* logManager.swift */; };
 		FEE6D000368583B22259B331 /* Pods_Omegacam_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0C0B16CB3EF0909AC5043A /* Pods_Omegacam_ios.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33092F1425D8B65700008B9B /* dataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataManager.swift; sourceTree = "<group>"; };
 		33798C4225CD197500E10EAF /* cameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraManager.swift; sourceTree = "<group>"; };
 		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
 		337FE908258B2B290051122F /* communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communication.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33EF140725C66E9900502335 /* MessagePacker in Frameworks */,
 				FEE6D000368583B22259B331 /* Pods_Omegacam_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				33798C4225CD197500E10EAF /* cameraManager.swift */,
+				33092F1425D8B65700008B9B /* dataManager.swift */,
 				33ACEF57258B285F00882601 /* miscellaneous.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
 				33EF140B25C6716100502335 /* logManager.swift */,
@@ -258,7 +259,6 @@
 			);
 			name = "Omegacam-ios";
 			packageProductDependencies = (
-				33EF140625C66E9900502335 /* MessagePacker */,
 			);
 			productName = "Omegacam-ios";
 			productReference = 33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */;
@@ -335,7 +335,6 @@
 			);
 			mainGroup = 33C149A6256CEA6A0093E6AE;
 			packageReferences = (
-				33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */,
 			);
 			productRefGroup = 33C149B0256CEA6A0093E6AE /* Products */;
 			projectDirPath = "";
@@ -502,6 +501,7 @@
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
 				33AB53B425CF8385002734A3 /* extensions.swift in Sources */,
 				33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */,
+				33092F1525D8B65700008B9B /* dataManager.swift in Sources */,
 				33EF140C25C6716100502335 /* logManager.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
 				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,
@@ -843,25 +843,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hirotakan/MessagePacker.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		33EF140625C66E9900502335 /* MessagePacker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 33EF140525C66E9900502335 /* XCRemoteSwiftPackageReference "MessagePacker" */;
-			productName = MessagePacker;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33C149A7256CEA6A0093E6AE /* Project object */;
 }

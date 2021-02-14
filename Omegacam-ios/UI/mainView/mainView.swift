@@ -11,7 +11,7 @@ import AVFoundation
 class mainClass: UIViewController {
     
     internal var cameraPreviewLayer : AVCaptureVideoPreviewLayer? = nil;
-    internal var cameraVideoDataOutput : AVCaptureVideoDataOutput? = nil;
+    //internal var cameraVideoDataOutput : AVCaptureVideoDataOutput? = nil;
     internal var mainView : UIView = UIView();
     internal var sideMenuView : UIView = UIView();
     internal var isShowingLogs = false;
@@ -39,18 +39,7 @@ class mainClass: UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(self.deviceRotationHandler), name: UIDevice.orientationDidChangeNotification, object: nil);
             
             camera.self; // instigate init of static obj
-            
-            /*DispatchQueue.global(qos: .background).async {
-                var i = 0;
-                while true{
-                    if (communication.send("test \(i)".data(using: .utf8)!)){
-                        print("sent \(i)")
-                        i += 1;
-                    }
-                    //usleep(800); 60 fps
-                    usleep(1600); // 30 fps
-                }
-            }*/
+            datamgr.self; // instigate init of static obj
             
         }
         else{

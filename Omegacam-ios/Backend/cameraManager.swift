@@ -11,12 +11,13 @@ import AVFoundation
 
 // https://medium.com/flawless-app-stories/capture-photo-using-avcapturesession-in-swift-842bb95751f0
 
-class cameraManager{
+class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
 
     static let obj = cameraManager(); // singleton
     //private var captureSession : AVCaptureSession?;
     
-    private init(){ // singleton
+    private override init(){ // singleton
+        super.init();
         setup();
     }
     
@@ -70,11 +71,14 @@ class cameraManager{
                 return;
             }
             
+            videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global(qos: .background));
+            
             let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession);
             cameraLayer.connection?.videoOrientation = .portrait;
+            
             var dataDict : [String : Any] = [:];
             dataDict["cameraLayer"] = cameraLayer;
-            dataDict["videoDataOutput"] = videoDataOutput;
+            //dataDict["videoDataOutput"] = videoDataOutput;
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
             
             captureSession.startRunning();
@@ -90,8 +94,24 @@ class cameraManager{
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
     }
     
-    public func captureImageData() -> Data{
-        return Data();
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        if (UIDevice.current.orientation.isValidInterfaceOrientation && UIDevice.current.orientation != .portraitUpsideDown){
+            connection.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
+            
+        }
+        
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else{
+            return;
+        }
+        
+        DispatchQueue.global(qos: .background).sync {
+            let image = CIImage(cvPixelBuffer: pixelBuffer);
+            //print("Captured image = \(image)");
+            let dataDict : [String : Any] = ["image" : image];
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: dataManager_imageBuffer), object: nil, userInfo: dataDict);
+        }
+        
     }
     
 }
+

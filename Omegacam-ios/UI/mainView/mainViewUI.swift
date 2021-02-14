@@ -12,7 +12,7 @@ import AVFoundation
 extension mainClass{
     
     @objc func deviceRotationHandler(){
-        if (UIDevice.current.orientation != .unknown && UIDevice.current.orientation != .portraitUpsideDown && UIDevice.current.orientation != .faceDown && UIDevice.current.orientation != .faceUp){
+        if (UIDevice.current.orientation.isValidInterfaceOrientation && UIDevice.current.orientation != .portraitUpsideDown){
             //print("rotation handler")
             // update mainView
             mainView.removeFromSuperview();
@@ -118,7 +118,7 @@ extension mainClass{
                 return;
             }
             
-            if let videoDataOutput = dict["videoDataOutput"] as? AVCaptureVideoDataOutput{
+            /*if let videoDataOutput = dict["videoDataOutput"] as? AVCaptureVideoDataOutput{
                 
                 cameraVideoDataOutput = videoDataOutput;
                 
@@ -127,7 +127,7 @@ extension mainClass{
                 log.addc("Error in videoDataOutput cast in showCameraView");
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
                 return;
-            }
+            }*/
             
         }
         else{

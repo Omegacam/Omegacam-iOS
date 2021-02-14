@@ -21,10 +21,13 @@ let InverseBackgroundColor = UIColor(named: "InverseBackgroundColor")!;
 
 let communication = communicationClass.obj;
 let camera = cameraManager.obj;
+let datamgr = dataManager.obj;
 
 // NSNotification macros
 
 let mainView_showErrorView = "mainView_showErrorView";
 let mainView_showCameraView = "mainView_showCameraView";
+
+let dataManager_imageBuffer = "dataManager_imageBuffer";
 
 
