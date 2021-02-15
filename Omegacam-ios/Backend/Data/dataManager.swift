@@ -9,12 +9,11 @@ import Foundation
 import AVFoundation
 import UIKit
 
-struct cameraDataPacket : Codable{
-    var s : String;
-}
 
 class dataManager{
     static let obj = dataManager(); // singleton
+    
+    public var shouldRun = true; // if error view gets presented, stop telemetry
     
     private var imageBuffer : CIImage? = nil;
     
@@ -45,23 +44,18 @@ class dataManager{
     private func delegateThread(){
         DispatchQueue.global(qos: .background).async {
             var i = 0;
-            while true{
+            while self.shouldRun{
                 
                 //let data = try! MessagePackEncoder().encode(cameraDataPacket(s: "Test"));
-                do{
-                    let data = try JSONEncoder().encode(cameraDataPacket(s: "Test \(i)"));
-                    if (!communication.send(data)){
-                        log.addc("Failed to send data - \(data)");
-                    }
-                    else{
-                        print("Sucess - \(i)");
-                        i+=1;
-                    }
-                    
+                
+                if (!communication.send(self.encodeStruct(self.gatherData()))){
+                    log.addc("Failed to send data");
                 }
-                catch{
-                    log.addc("Failed to encode cameraDataPacket to json");
+                else{
+                    print("Sucess - \(i)");
+                    i+=1;
                 }
+                
                 //usleep(800); // 60 fps
                 usleep(1600); // 30 fps
             }
@@ -70,14 +64,3 @@ class dataManager{
     
 }
 
-/*DispatchQueue.global(qos: .background).async {
-    var i = 0;
-    while true{
-        if (communication.send("test \(i)".data(using: .utf8)!)){
-            print("sent \(i)")
-            i += 1;
-        }
-        //usleep(800); 60 fps
-        usleep(1600); // 30 fps
-    }
-}*/

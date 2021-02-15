@@ -41,6 +41,8 @@ extension mainClass{
     @objc func showErrorView(_ notification: NSNotification){
         
         isShowingLogs = true;
+        datamgr.shouldRun = false;
+        
         //log.add("Create an issue at https://github.com/Omegacam/Omegacam-iOS for help or more information. Make sure to include the above logs.");
         
         for views in mainView.subviews{
@@ -96,6 +98,7 @@ extension mainClass{
     }
     
     @objc func showCameraView(_ notification: NSNotification){
+        
         
         self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
         

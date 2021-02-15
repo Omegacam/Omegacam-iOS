@@ -11,10 +11,10 @@ import AVFoundation
 
 // https://medium.com/flawless-app-stories/capture-photo-using-avcapturesession-in-swift-842bb95751f0
 
-class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
+class cameraManager: NSObject{
 
     static let obj = cameraManager(); // singleton
-    //private var captureSession : AVCaptureSession?;
+    private var captureSession : AVCaptureSession?;
     
     private override init(){ // singleton
         super.init();
@@ -48,13 +48,14 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
     }
     
     private func setupCaptureSession(){
-        let captureSession = AVCaptureSession();
+        captureSession = AVCaptureSession();
+        
         if let captureDevice = AVCaptureDevice.default(for: .video){
             
             do{
                 let input = try AVCaptureDeviceInput(device: captureDevice);
-                if (captureSession.canAddInput(input)){
-                    captureSession.addInput(input);
+                if (captureSession!.canAddInput(input)){
+                    captureSession?.addInput(input);
                 }
             } catch let error{
                 handleDismiss("Failed to set input device with error: \(error)");
@@ -63,8 +64,8 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
         
             
             let videoDataOutput = AVCaptureVideoDataOutput();
-            if (captureSession.canAddOutput(videoDataOutput)){
-                captureSession.addOutput(videoDataOutput);
+            if (captureSession!.canAddOutput(videoDataOutput)){
+                captureSession?.addOutput(videoDataOutput);
             }
             else{
                 handleDismiss("Unable to create data stream from camera");
@@ -73,7 +74,7 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
             
             videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global(qos: .background));
             
-            let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession);
+            let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession!);
             cameraLayer.connection?.videoOrientation = .portrait;
             
             var dataDict : [String : Any] = [:];
@@ -81,7 +82,11 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
             //dataDict["videoDataOutput"] = videoDataOutput;
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
             
-            captureSession.startRunning();
+            if (!setUpSessionPreset()){
+                handleDismiss("Unable to set a suitable camera profile for your device");
+            }
+            
+            captureSession!.startRunning();
             
         }
         else{
@@ -94,6 +99,37 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
     }
     
+    // camera settings
+    
+    private func setUpSessionPreset() -> Bool{
+        let resolutions = [(1280, 720), (640, 480), (960, 540), (1920, 1080), (3840, 2160), (320, 240), (352, 288)];
+        
+        for (x, y) in resolutions{
+            if (setSessionPreset(AVCaptureSession.Preset(rawValue: "AVCaptureSessionPreset\(x)x\(y)"))){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    public func setSessionPreset(_ p: AVCaptureSession.Preset) -> Bool{
+        if (self.captureSession!.canSetSessionPreset(p)){
+            self.captureSession!.sessionPreset = p;
+            //print("set preset to - \(p.rawValue)")
+            return true;
+        }
+        return false;
+    }
+    
+    public func getSessionPreset() -> AVCaptureSession.Preset{
+        return self.captureSession!.sessionPreset;
+    }
+    
+    
+}
+
+extension cameraManager : AVCaptureVideoDataOutputSampleBufferDelegate{
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if (UIDevice.current.orientation.isValidInterfaceOrientation && UIDevice.current.orientation != .portraitUpsideDown){
             connection.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
@@ -112,6 +148,4 @@ class cameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
         }
         
     }
-    
 }
-

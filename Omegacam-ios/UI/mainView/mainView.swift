@@ -21,6 +21,9 @@ class mainClass: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        log.add("Device model - \(UIDevice.current.model)");
+        log.add("OS - \(UIDevice.current.systemName) with version # \(UIDevice.current.systemVersion)");
+        
         mainView = UIView(frame: CGRect(x: 0, y: AppUtility.topSafeAreaInsetHeight, width: AppUtility.getCurrentScreenSize().width, height: AppUtility.getCurrentScreenSize().height - AppUtility.topSafeAreaInsetHeight));
         self.view.addSubview(mainView);
         
@@ -40,7 +43,6 @@ class mainClass: UIViewController {
             
             camera.self; // instigate init of static obj
             datamgr.self; // instigate init of static obj
-            
         }
         else{
             log.addc("Failed to establish communication connection");
