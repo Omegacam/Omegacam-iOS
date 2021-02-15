@@ -16,6 +16,8 @@ extension dataManager{
         var v_width : Int = -1;
         var v_height : Int = -1;
         
+        var frameData : Data = Data();
+        var frameDataSize : Int = -1;
     }
     
     internal func encodeStruct(_ s: cameraDataPacket) -> Data{
@@ -37,6 +39,12 @@ extension dataManager{
         //print("res - \(resolution)")
         packet.v_width = resolution.0;
         packet.v_height = resolution.1;
+        
+        let frameData = getCameraFrameData();
+        packet.frameData = frameData;
+        packet.frameDataSize = frameData.count;
+        
+        print("frame data - \(frameData)")
         
         return packet;
     }
@@ -74,6 +82,21 @@ extension dataManager{
         }
     }
     
+    private func getCameraFrameData() -> Data{
+        
+        if (imageBuffer == nil){
+            return Data();
+        }
+        
+        guard let ciImageData = ciContext.jpegRepresentation(of: imageBuffer!, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:]) else{
+            log.addc("Failed to convert CIImage to jpeg representation");
+            return Data();
+        }
     
+        imageBuffer = nil;
+        
+        return ciImageData;
+        //return Data();
+    }
     
 }

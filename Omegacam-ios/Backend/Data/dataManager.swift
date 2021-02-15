@@ -15,7 +15,8 @@ class dataManager{
     
     public var shouldRun = true; // if error view gets presented, stop telemetry
     
-    private var imageBuffer : CIImage? = nil;
+    internal var imageBuffer : CIImage? = nil;
+    internal let ciContext = CIContext();
     
     private init(){
         delegateThread();
@@ -43,21 +44,31 @@ class dataManager{
     
     private func delegateThread(){
         DispatchQueue.global(qos: .background).async {
-            var i = 0;
-            while self.shouldRun{
-                
-                //let data = try! MessagePackEncoder().encode(cameraDataPacket(s: "Test"));
-                
-                if (!communication.send(self.encodeStruct(self.gatherData()))){
-                    log.addc("Failed to send data");
+            while true{
+                var i = 0;
+                while self.shouldRun{
+                    
+                    //let data = try! MessagePackEncoder().encode(cameraDataPacket(s: "Test"));
+                    
+                    do{ // warning shows that no throws could be called but the do catch is necessary due to the fact that we need autoreleasepool in order to not leak memory with JSONEncoder
+                        try autoreleasepool{
+                            if (!communication.send(self.encodeStruct(self.gatherData()))){
+                                log.addc("Failed to send data");
+                            }
+                            else{
+                                print("Sucess - \(i)");
+                                i+=1;
+                            }
+                        }
+                    }
+                    catch{
+                        log.addc("autoreleasepool error");
+                    }
+                    
+                    //usleep(800); // 60 fps
+                    usleep(1600); // 30 fps
                 }
-                else{
-                    print("Sucess - \(i)");
-                    i+=1;
-                }
-                
-                //usleep(800); // 60 fps
-                usleep(1600); // 30 fps
+                sleep(3);
             }
         }
     }
