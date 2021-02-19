@@ -22,6 +22,7 @@ class mainClass: UIViewController {
         super.viewDidLoad();
         
         log.add("Device model - \(UIDevice.current.model)");
+        log.add("Device name - \(UIDevice.current.name)");
         log.add("OS - \(UIDevice.current.systemName) with version # \(UIDevice.current.systemVersion)");
         
         mainView = UIView(frame: CGRect(x: 0, y: AppUtility.topSafeAreaInsetHeight, width: AppUtility.getCurrentScreenSize().width, height: AppUtility.getCurrentScreenSize().height - AppUtility.topSafeAreaInsetHeight));

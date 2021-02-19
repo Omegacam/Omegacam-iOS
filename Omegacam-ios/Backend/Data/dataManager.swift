@@ -13,7 +13,7 @@ import UIKit
 class dataManager{
     static let obj = dataManager(); // singleton
     
-    public var shouldRun = true; // if error view gets presented, stop telemetry
+    public var shouldRun = false; // if camera view gets presented and is sucessfull, start telemetry
     
     internal var imageBuffer : CIImage? = nil;
     internal let ciContext = CIContext();

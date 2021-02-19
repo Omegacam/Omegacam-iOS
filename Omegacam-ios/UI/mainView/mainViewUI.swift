@@ -141,11 +141,14 @@ extension mainClass{
         
         AppUtility.lockOrientation(.all);
         
+        datamgr.shouldRun = true;
+        
         showCameraUIElements();
         
     }
     
     func showCameraUIElements(){
+        
         for views in mainView.subviews{
             views.removeFromSuperview();
         }

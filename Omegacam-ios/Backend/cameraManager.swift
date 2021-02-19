@@ -116,14 +116,13 @@ class cameraManager: NSObject{
     public func setSessionPreset(_ p: AVCaptureSession.Preset) -> Bool{
         if (self.captureSession!.canSetSessionPreset(p)){
             self.captureSession!.sessionPreset = p;
-            //print("set preset to - \(p.rawValue)")
             return true;
         }
         return false;
     }
     
-    public func getSessionPreset() -> AVCaptureSession.Preset{
-        return self.captureSession!.sessionPreset;
+    public func getSessionPreset() -> AVCaptureSession.Preset?{
+        return self.captureSession?.sessionPreset;
     }
     
     
