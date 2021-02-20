@@ -7,77 +7,90 @@
 
 import Foundation
 import Network
-import SwiftyZeroMQ5
-import MessagePacker
+
+// https://developer.apple.com/news/?id=0oi77447
+
+struct udpsocket{
+    var connectionIP : NWEndpoint.Host = "";
+    var connectionPort : NWEndpoint.Port = 0;
+    
+    var multicastGroup : NWMulticastGroup? = nil;
+    var connectionGroup : NWConnectionGroup? = nil;
+    var isConnected : Bool = false;
+}
 
 class communicationClass{
     
     static let obj = communicationClass(); // singleton pattern
     
-    private var connectionString = "";
-    private var context : SwiftyZeroMQ.Context?;
-    public var pub :  SwiftyZeroMQ.Socket?;
+    private var radio : udpsocket = udpsocket(); // Naming scheme based off RADIO DISH protocol from ZeroMQ
     
     private init(){ // singleton pattern
         LocalNetworkPermissionService.obj.triggerDialog();
-        
-        do{
-            context = try SwiftyZeroMQ.Context();
-        }
-        catch{
-            log.addc("Communication Error: Context Creation - \(error)");
-        }
-        printVersion();
     }
     
-    internal func printVersion(){
-        let (major, minor, patch, _) = SwiftyZeroMQ.version;
-        log.add("ZeroMQ library version is \(major).\(minor) with patch level .\(patch)");
-        log.add("SwiftyZeroMQ version is \(SwiftyZeroMQ.frameworkVersion)");
-    }
     
-    public func connect(connectionstr: String) -> Bool {
+    public func connect(ip: String, port: UInt) -> Bool {
         
-        connectionString = connectionstr;
-        
-        do{
-            pub = try context?.socket(.publish);
-            
-            try pub?.bind(connectionString);
-            //try pub?.setRecvTimeout(Int32(recvReconnect)); // in ms
-            //try pub?.setRecvBufferSize(Int32(recvBuffer));
-        }
-        catch{
-            log.addc("CONNECT COMMUNICATION error - \(error)");
-            //lastCommunicationError = "\(error)";
+        if (radio.isConnected){
+            log.addc("Already connected, use newconnection function");
             return false;
         }
+        
+        radio.connectionIP = NWEndpoint.Host(ip);
+        radio.connectionPort = NWEndpoint.Port(String(port))!;
+            
+        do{
+            radio.multicastGroup = try NWMulticastGroup(for: [.hostPort(host: radio.connectionIP, port: radio.connectionPort)]);
+            radio.connectionGroup = NWConnectionGroup(with: radio.multicastGroup!, using: .udp);
+            
+            radio.connectionGroup?.stateUpdateHandler = { (newState) in
+                
+                log.add("connection group entered state \(String(describing: newState))");
+                if (newState == .ready){
+                    self.radio.isConnected = true;
+                    log.add("connection is ready");
+                }
+                
+            }
+            
+            radio.connectionGroup?.setReceiveHandler(handler: { (_, _, _) in });
+
+            radio.connectionGroup?.start(queue: .global(qos: .background));
+            
+        }
+        catch{
+            log.addc("Error connecting to \(ip) with port \(port) and protocol udp - \(error)");
+            radio = udpsocket(); // reset socket
+            return false;
+        }
+        
+        //radio.isConnected = true;
         return true;
         
     }
     
     public func disconnect() -> Bool {
         
-        do{
-            try pub?.close();
-            pub = nil;
-        }
-        catch{
-            log.add("DISCONNECT COMMUNICATION error - \(error)");
-            pub = nil;
+        if (!radio.isConnected){
             return false;
         }
+        
+        radio.connectionGroup?.cancel();
+        radio.isConnected = false;
+        
+        radio = udpsocket(); // reset socket
         
         return true;
     }
     
-    public func newconnection(connectionstr: String) -> Bool {
+    public func newconnection(ip: String, port: UInt) -> Bool {
         
         if (!disconnect()){
-            log.add("Failed to disconnect but not severe error");
+            log.add("Failed to disconnect but continuing");
         }
         
-        if (!connect(connectionstr: connectionstr)){
+        if (!connect(ip: ip, port: port)){
             return false;
         }
         
@@ -86,57 +99,24 @@ class communicationClass{
     }
     
     public func send(_ s: Data) -> Bool{
-        do{
-            try pub?.send(data: s);
-        }
-        catch{
-            log.add("Failed to send data");
+        
+        if (!radio.isConnected){
+            log.add("Radio is NOT connected with send func");
             return false;
         }
+        
+        radio.connectionGroup?.send(content: s, completion: { (error) in
+            if (error != nil){
+                log.addc("FAILED TO SEND DATA. Error - \(String(describing: error?.localizedDescription))");
+            }
+            else{
+                log.add("Send callback is sucessfull");
+            }
+        });
+        
         return true;
     }
-    
-    // MARK: SwiftyZeroMQ helper Functions
-    public static func checkValidProtocol(communicationProtocol: String) -> Bool{
-        switch communicationProtocol {
-        case "ipc":
-            return SwiftyZeroMQ.has(.ipc);
-        case "pgm":
-            return SwiftyZeroMQ.has(.pgm);
-        case "tipc":
-            return SwiftyZeroMQ.has(.tipc);
-        case "norm":
-            return SwiftyZeroMQ.has(.norm);
-        case "curve":
-            return SwiftyZeroMQ.has(.curve);
-        case "gssapi":
-            return SwiftyZeroMQ.has(.gssapi);
-        default:
-            print("not valid protocol for checking")
-            return false;
-        }
-    }
-    
-    public static func convertErrno(errorn: Int32) -> String{
-        switch errorn {
-        case EAGAIN:
-            return "EAGAIN - Non-blocking mode was requested and no messages are available at the moment.";
-        case ENOTSUP:
-            return "ENOTSUP - The zmq_recv() operation is not supported by this socket type.";
-        case EFSM:
-            return "EFSM - The zmq_recv() operation cannot be performed on this socket at the moment due to the socket not being in the appropriate state.";
-        case ETERM:
-            return "ETERM - The ØMQ context associated with the specified socket was terminated.";
-        case ENOTSOCK:
-            return "ENOTSOCK - The provided socket was invalid.";
-        case EINTR:
-            return "EINTR - The operation was interrupted by delivery of a signal before a message was available.";
-        case EFAULT:
-            return "EFAULT - The message passed to the function was invalid.";
-        default:
-            return "Not valid errno code";
-        }
-    }
+
     
 }
 
