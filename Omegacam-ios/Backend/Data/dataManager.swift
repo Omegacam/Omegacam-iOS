@@ -18,6 +18,8 @@ class dataManager{
     internal var imageBuffer : CIImage? = nil;
     internal let ciContext = CIContext();
     
+    internal var frameCount : UInt64 = 0;
+    
     private init(){
         delegateThread();
         NotificationCenter.default.addObserver(self, selector: #selector(self.addImageBuffer), name: NSNotification.Name(rawValue: dataManager_imageBuffer), object: nil);
@@ -45,7 +47,6 @@ class dataManager{
     private func delegateThread(){
         DispatchQueue.global(qos: .background).async {
             while true{
-                var i = 0;
                 while self.shouldRun{
                     
                     //let data = try! MessagePackEncoder().encode(cameraDataPacket(s: "Test"));
@@ -56,15 +57,16 @@ class dataManager{
                                 log.addc("Failed to send data");
                             }
                             else{
-                                print("Sucess - \(i)");
-                                i+=1;
+                                print("Sucess - \(self.frameCount)");
+                                self.frameCount += 1;
                             }
                         }
                     }
                     catch{} // catch statement is required for do
                     
                     //usleep(800); // 60 fps
-                    usleep(1600); // 30 fps
+                    //usleep(1600); // 30 fps
+                    usleep(100);
                 }
                 sleep(3);
             }

@@ -33,7 +33,7 @@ class mainClass: UIViewController {
         
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
         
-        if (communication.connect(ip: "224.0.0.1", port: 28650)){
+        if (communication.connect(ip: "224.0.0.0", port: 28650)){
             log.add(LocalNetworkPermissionService.obj.getIPAddress());
             
             AppUtility.lockOrientation(.portrait);
