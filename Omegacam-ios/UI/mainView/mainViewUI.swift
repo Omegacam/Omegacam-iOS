@@ -13,7 +13,7 @@ extension mainClass{
     
     @objc func deviceRotationHandler(){
         if (UIDevice.current.orientation.isValidInterfaceOrientation && UIDevice.current.orientation != .portraitUpsideDown){
-            //print("rotation handler")
+  
             // update mainView
             mainView.removeFromSuperview();
             if (UIDevice.current.orientation.isPortrait){
@@ -24,21 +24,17 @@ extension mainClass{
             }
             self.view.addSubview(mainView);
             
-            if (!isShowingLogs){
-                
-                // update preview layer
-                cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!;
-                cameraPreviewLayer?.frame = self.view.frame;
-                
-                showCameraUIElements();
+            if (isShowingLogs){
+                showErrorView();
             }
             else{
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
+                showCameraUIElements();
             }
+            
         }
     }
     
-    @objc func showErrorView(_ notification: NSNotification){
+    func showErrorView(){
         
         isShowingLogs = true;
         datamgr.shouldRun = false;
@@ -97,56 +93,7 @@ extension mainClass{
         //mainView.backgroundColor = UIColor.white;
     }
     
-    @objc func showCameraView(_ notification: NSNotification){
-        
-        
-        self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
-        
-        if let dict = notification.userInfo as NSDictionary?{
-            if let cameraLayer = dict["cameraLayer"] as? AVCaptureVideoPreviewLayer{
-                
-                //print("setting up camera")
-                
-                cameraLayer.frame = self.view.frame;
-                cameraLayer.videoGravity = .resizeAspectFill;
-                cameraLayer.connection?.videoOrientation = .portrait;
-                self.view.layer.insertSublayer(cameraLayer, at: 0);
-                
-                self.cameraPreviewLayer = cameraLayer;
-                
-            }
-            else{
-                log.addc("Error in cameraLayer cast in showCameraView");
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
-                return;
-            }
-            
-            /*if let videoDataOutput = dict["videoDataOutput"] as? AVCaptureVideoDataOutput{
-                
-                cameraVideoDataOutput = videoDataOutput;
-                
-            }
-            else{
-                log.addc("Error in videoDataOutput cast in showCameraView");
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
-                return;
-            }*/
-            
-        }
-        else{
-            log.addc("Error in dictionary cast in showCameraView");
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
-            return;
-        }
-        
-        AppUtility.lockOrientation(.all);
-        
-        datamgr.shouldRun = true;
-        
-        showCameraUIElements();
-        
-    }
-    
+
     func showCameraUIElements(){
         
         for views in mainView.subviews{
@@ -175,6 +122,7 @@ extension mainClass{
     }
     
     func renderSideMenu(){
+        
         let sideMenuWidth = mainView.frame.width / (UIDevice.current.orientation.isLandscape ? 3 : 1.5);
         let sideMenuFrame = CGRect(x: mainView.frame.width, y: 0, width: sideMenuWidth, height: mainView.frame.height);
         sideMenuView = UIView(frame: sideMenuFrame);
@@ -240,16 +188,10 @@ extension mainClass{
         else if (sender.state == .ended){
             
             let thresholdPercent : CGFloat = 0.5;
-            if (sideMenuView.frame.minX <= mainView.frame.width - (sideMenuView.frame.width * thresholdPercent)){ // pulled far enough, animate pull out
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.sideMenuView.frame = CGRect(x: self.mainView.frame.width - self.sideMenuView.frame.width, y: 0, width: self.sideMenuView.frame.width, height: self.sideMenuView.frame.height);
-                });
-            }
-            else{
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.sideMenuView.frame = CGRect(x: self.mainView.frame.width, y: 0, width: self.sideMenuView.frame.width, height: self.sideMenuView.frame.height);
-                });
-            }
+            
+            UIView.animate(withDuration: 0.2, animations: { [self] in
+                self.sideMenuView.frame = CGRect(x: self.mainView.frame.width - (  self.sideMenuView.frame.minX <= self.mainView.frame.width - (self.sideMenuView.frame.width * thresholdPercent) ? self.sideMenuView.frame.width : CGFloat(0)), y: 0, width: self.sideMenuView.frame.width, height: self.sideMenuView.frame.height);
+            });
             
         }
     }

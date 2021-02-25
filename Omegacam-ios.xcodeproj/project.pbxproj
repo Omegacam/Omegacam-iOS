@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		33092F1525D8B65700008B9B /* dataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33092F1425D8B65700008B9B /* dataManager.swift */; };
-		33798C4325CD197500E10EAF /* cameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4225CD197500E10EAF /* cameraManager.swift */; };
+		3313F79B25E775E6004A25CF /* HaishinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3313F79A25E775E6004A25CF /* HaishinKit */; };
+		33798C4325CD197500E10EAF /* streamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4225CD197500E10EAF /* streamManager.swift */; };
 		33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4825CD211800E10EAF /* mainViewUI.swift */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
 		33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A828F82588950F00CE8B4B /* AppUtility.swift */; };
@@ -61,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		33092F1425D8B65700008B9B /* dataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataManager.swift; sourceTree = "<group>"; };
-		33798C4225CD197500E10EAF /* cameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraManager.swift; sourceTree = "<group>"; };
+		33798C4225CD197500E10EAF /* streamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = streamManager.swift; sourceTree = "<group>"; };
 		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
 		337FE908258B2B290051122F /* communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communication.swift; sourceTree = "<group>"; };
 		33A828F82588950F00CE8B4B /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3313F79B25E775E6004A25CF /* HaishinKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				33CE231125D9F55B00A8442A /* Data */,
-				33798C4225CD197500E10EAF /* cameraManager.swift */,
+				33798C4225CD197500E10EAF /* streamManager.swift */,
 				33ACEF57258B285F00882601 /* miscellaneous.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
 				33EF140B25C6716100502335 /* logManager.swift */,
@@ -229,6 +231,9 @@
 			dependencies = (
 			);
 			name = "Omegacam-ios";
+			packageProductDependencies = (
+				3313F79A25E775E6004A25CF /* HaishinKit */,
+			);
 			productName = "Omegacam-ios";
 			productReference = 33C149AF256CEA6A0093E6AE /* Omegacam-ios.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +305,9 @@
 				Base,
 			);
 			mainGroup = 33C149A6256CEA6A0093E6AE;
+			packageReferences = (
+				3313F79925E775E6004A25CF /* XCRemoteSwiftPackageReference "HaishinKit" */,
+			);
 			productRefGroup = 33C149B0256CEA6A0093E6AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -357,7 +365,7 @@
 			files = (
 				33A828F92588950F00CE8B4B /* AppUtility.swift in Sources */,
 				33C149E6256CEADA0093E6AE /* mainView.swift in Sources */,
-				33798C4325CD197500E10EAF /* cameraManager.swift in Sources */,
+				33798C4325CD197500E10EAF /* streamManager.swift in Sources */,
 				33ACEF58258B285F00882601 /* miscellaneous.swift in Sources */,
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
 				33AB53B425CF8385002734A3 /* extensions.swift in Sources */,
@@ -701,6 +709,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3313F79925E775E6004A25CF /* XCRemoteSwiftPackageReference "HaishinKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shogo4405/HaishinKit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3313F79A25E775E6004A25CF /* HaishinKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3313F79925E775E6004A25CF /* XCRemoteSwiftPackageReference "HaishinKit" */;
+			productName = HaishinKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33C149A7256CEA6A0093E6AE /* Project object */;
 }

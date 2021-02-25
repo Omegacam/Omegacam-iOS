@@ -10,7 +10,6 @@ import AVFoundation
 
 class mainClass: UIViewController {
     
-    internal var cameraPreviewLayer : AVCaptureVideoPreviewLayer? = nil;
     //internal var cameraVideoDataOutput : AVCaptureVideoDataOutput? = nil;
     internal var mainView : UIView = UIView();
     internal var sideMenuView : UIView = UIView();
@@ -31,29 +30,26 @@ class mainClass: UIViewController {
         self.view.addGestureRecognizer(panGesture);
         panGesture.addTarget(self, action: #selector(self.handlePan));
         
-        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
-        
-        if (communication.connect(ip: "224.0.0.0", port: 28650)){
-            log.add(LocalNetworkPermissionService.obj.getIPAddress());
-            
-            AppUtility.lockOrientation(.portrait);
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(self.showErrorView), name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
-            NotificationCenter.default.addObserver(self, selector: #selector(self.showCameraView), name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
-            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceRotationHandler), name: UIDevice.orientationDidChangeNotification, object: nil);
-            
-            camera.self; // instigate init of static obj
-            datamgr.self; // instigate init of static obj
-        }
-        else{
+        log.add(LocalNetworkPermissionService.obj.getIPAddress());
+        if (!communication.connect(ip: "224.0.0.0", port: 28650)){
             log.addc("Failed to establish communication connection");
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
+            showErrorView();
+            return;
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceRotationHandler), name: UIDevice.orientationDidChangeNotification, object: nil);
+        
+        stream.self; // instigate init of static obj
+        datamgr.self; // instigate init of static obj
+        
+        datamgr.shouldRun = true;
+        
+        showCameraUIElements();
+        
+        self.view.backgroundColor = .white;
     }
 
     deinit{
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: mainView_showErrorView), object: nil);
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: mainView_showCameraView), object: nil);
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil);
     }
     
