@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Omegacam uses your device&apos;s microphone in order to capture an audio signal to send to your computer.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -21,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Omegacam uses your device's camera in order to capture a video signal to send to your computer.</string>
+	<string>Omegacam uses your device&apos;s camera in order to capture a video signal to send to your computer.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProDisplay-Black.ttf</string>

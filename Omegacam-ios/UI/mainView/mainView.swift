@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import HaishinKit
 
 class mainClass: UIViewController {
     
@@ -46,7 +47,13 @@ class mainClass: UIViewController {
         
         showCameraUIElements();
         
-        self.view.backgroundColor = .white;
+        //self.view.backgroundColor = .white;
+        while (!stream.getIsStreamSetup()){
+            log.add("Waiting for stream to finish setting up");
+        }
+        
+        let streamView = HKView(frame: self.view.frame);
+        self.view.insertSubview(stream.attachStreamToView(streamView), at: 0);
     }
 
     deinit{
