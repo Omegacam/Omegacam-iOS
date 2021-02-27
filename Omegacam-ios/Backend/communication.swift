@@ -8,7 +8,6 @@
 import Foundation
 import Network
 import SwiftyZeroMQ5
-import MessagePacker
 
 class communicationClass{
     
