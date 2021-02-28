@@ -98,21 +98,23 @@ class communicationClass{
         
     }
     
-    public func send(_ s: Data) -> Bool{
+    public func send(_ s: [Data]) -> Bool{
         
         if (!radio.isConnected){
             log.add("Radio is NOT connected with send func");
             return false;
         }
         
-        radio.connectionGroup?.send(content: s, completion: { (error) in
-            if (error != nil){
-                log.addc("FAILED TO SEND DATA. Error - \(String(describing: error?.localizedDescription))");
-            }
-            else{
-                log.add("Send callback is sucessfull");
-            }
-        });
+        for packet in s{
+            radio.connectionGroup?.send(content: packet, completion: { (error) in
+                if (error != nil){
+                    log.addc("FAILED TO SEND DATA. Error - \(String(describing: error?.localizedDescription))");
+                }
+                else{
+                    //log.add("Send callback is sucessfull");
+                }
+            });
+        }
         
         return true;
     }

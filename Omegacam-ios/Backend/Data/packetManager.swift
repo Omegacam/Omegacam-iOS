@@ -24,7 +24,7 @@ extension dataManager{
         var frameNumber : UInt64 = 0;
     }
     
-    internal func encodeStruct(_ s: cameraDataPacket) -> Data{
+    internal func encodeStruct(_ s: cameraDataPacket) -> [Data]{
         var data : Data = Data();
         do{
             data = try JSONEncoder().encode(s);
@@ -32,7 +32,10 @@ extension dataManager{
         catch{
             log.addc("Failed to encode struct into JSON");
         }
-        return data;
+        
+        //log.add("size of packet - \(data.count) bytes");
+        
+        return multipartPacketManager.obj.encodeToMultipart(data);
     }
     
     internal func gatherData() -> cameraDataPacket{
@@ -93,15 +96,17 @@ extension dataManager{
             return Data();
         }
         
-        /*guard let ciImageData = ciContext.jpegRepresentation(of: imageBuffer!, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:]) else{
+        guard let ciImageData = ciContext.jpegRepresentation(of: imageBuffer!, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:]) else{
             log.addc("Failed to convert CIImage to jpeg representation");
             return Data();
         }
     
         imageBuffer = nil;
         
-        return ciImageData;*/
-        return Data();
+        //log.add("size of image data - \(ciImageData.count) bytes")
+        
+        return ciImageData;
+        //return Data();
     }
     
 }

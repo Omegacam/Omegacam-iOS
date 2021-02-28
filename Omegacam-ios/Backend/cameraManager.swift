@@ -102,7 +102,7 @@ class cameraManager: NSObject{
     // camera settings
     
     private func setUpSessionPreset() -> Bool{
-        let resolutions = [(1280, 720), (640, 480), (960, 540), (1920, 1080), (3840, 2160), (320, 240), (352, 288)];
+        let resolutions = [(320, 240), (352, 288), (640, 480), (960, 540), (1280, 720), (1920, 1080), (3840, 2160)];
         
         for (x, y) in resolutions{
             if (setSessionPreset(AVCaptureSession.Preset(rawValue: "AVCaptureSessionPreset\(x)x\(y)"))){

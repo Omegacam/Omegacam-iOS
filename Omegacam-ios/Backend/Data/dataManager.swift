@@ -64,9 +64,9 @@ class dataManager{
                     }
                     catch{} // catch statement is required for do
                     
-                    //usleep(800); // 60 fps
+                    usleep(800); // 60 fps
                     //usleep(1600); // 30 fps
-                    usleep(100);
+                    // usleep(1);
                 }
                 sleep(3);
             }
