@@ -31,8 +31,6 @@ class multipartPacketManager{
             var temp_buffer : [UInt8] = [];
             var temp_output : [Data] = []; // unformatted data array
             
-            var group_packet_size : UInt = 0;
-            
             for byte in raw_data_array{
                 
                 temp_buffer.append(byte);
@@ -41,14 +39,19 @@ class multipartPacketManager{
                 if (temp_buffer_data.count >= maxPacketSize){
                     temp_output.append(temp_buffer_data);
                     temp_buffer.removeAll();
-                    group_packet_size += 1;
                 }
                 
             }
             
+            let temp_buffer_data = convertAUInt8ToData(temp_buffer);
+            if (temp_buffer_data.count > 0){
+                temp_output.append(temp_buffer_data);
+                temp_buffer.removeAll();
+            }
+            
             var i : UInt = 0;
             for p in temp_output{
-                output.append(formatData(packet_group_id: packetGroupNumber, packet_group_size: group_packet_size, packet_group_num: i, raw: p));
+                output.append(formatData(packet_group_id: packetGroupNumber, packet_group_size: UInt(temp_output.count), packet_group_num: i, raw: p));
                 i += 1;
             }
             
@@ -77,7 +80,7 @@ class multipartPacketManager{
             return Data();
         }
         
-        let encoded_string = "\(packet_group_id):\(packet_group_size):\(packet_group_num):\(String(decoding: raw, as: UTF8.self))";
+        let encoded_string = "\(packet_group_id)~\(packet_group_size)~\(packet_group_num)~\(String(decoding: raw, as: UTF8.self))";
         
         return encoded_string.data(using: .utf8)!;
     }
