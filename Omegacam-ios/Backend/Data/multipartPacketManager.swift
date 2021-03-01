@@ -15,7 +15,7 @@ class multipartPacketManager{
     
     //
     
-    private let maxPacketSize : UInt = 1500; //
+    private let maxPacketSize : UInt = 4000; //
     
     private var packetGroupNumber : UInt = 0; // max is 1024
     private let maxPacketGroupNumber : UInt = 1024;
