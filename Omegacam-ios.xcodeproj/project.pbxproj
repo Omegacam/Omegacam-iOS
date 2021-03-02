@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,9 +38,11 @@
 		33C149E6256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E7256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33C149E8256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
-		33C9D61725EB5E6D00D4F245 /* multipartPacketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9D61625EB5E6D00D4F245 /* multipartPacketManager.swift */; };
 		33CE231625D9F58500A8442A /* packetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE231525D9F58500A8442A /* packetManager.swift */; };
 		33EF140C25C6716100502335 /* logManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF140B25C6716100502335 /* logManager.swift */; };
+		4DD71BE7572472794C0AF61F /* Pods_Omegacam_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3992E452FFD74945F2836A8 /* Pods_Omegacam_iosTests.framework */; };
+		B295200D56951CFAD46A2750 /* Pods_Omegacam_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D3C58A06892B8E095CEA45 /* Pods_Omegacam_ios.framework */; };
+		F7FEB28A725C3612C064AB7E /* Pods_Omegacam_ios_Omegacam_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B10BBF506A34951806E9815 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B10BBF506A34951806E9815 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_ios_Omegacam_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33092F1425D8B65700008B9B /* dataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataManager.swift; sourceTree = "<group>"; };
 		33798C4225CD197500E10EAF /* cameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraManager.swift; sourceTree = "<group>"; };
 		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
@@ -86,10 +89,16 @@
 		33C149D4256CEA6C0093E6AE /* Omegacam_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Omegacam_iosUITests.swift; sourceTree = "<group>"; };
 		33C149D6256CEA6C0093E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C149E5256CEADA0093E6AE /* mainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
-		33C9D61625EB5E6D00D4F245 /* multipartPacketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipartPacketManager.swift; sourceTree = "<group>"; };
 		33CE231525D9F58500A8442A /* packetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = packetManager.swift; sourceTree = "<group>"; };
-		33EE4CEC25E0CE84007E1F18 /* Omegacam-ios.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Omegacam-ios.entitlements"; sourceTree = "<group>"; };
 		33EF140B25C6716100502335 /* logManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logManager.swift; sourceTree = "<group>"; };
+		6C053D21E79E4208CFA7CE1A /* Pods-Omegacam-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		87BEDDE4FC07A5FA20B3EEDB /* Pods-Omegacam-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FE3B2FD0EF0B5D686E48EA2 /* Pods-Omegacam-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.release.xcconfig"; sourceTree = "<group>"; };
+		93D3C58A06892B8E095CEA45 /* Pods_Omegacam_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D32A743E6062E97E767B5F2 /* Pods-Omegacam-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios.release.xcconfig"; sourceTree = "<group>"; };
+		B51D61D358AF9B23F4AF1AC3 /* Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C88BFADD2EAC12870BDB6DD8 /* Pods-Omegacam-ios-Omegacam-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-ios-Omegacam-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E3992E452FFD74945F2836A8 /* Pods_Omegacam_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B295200D56951CFAD46A2750 /* Pods_Omegacam_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD71BE7572472794C0AF61F /* Pods_Omegacam_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FEB28A725C3612C064AB7E /* Pods_Omegacam_ios_Omegacam_iosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +166,8 @@
 				33C149C8256CEA6C0093E6AE /* Omegacam-iosTests */,
 				33C149D3256CEA6C0093E6AE /* Omegacam-iosUITests */,
 				33C149B0256CEA6A0093E6AE /* Products */,
+				D26E35BB772F59CBC9FC7FB0 /* Pods */,
+				3AB25F8715326EE5956C7BD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,7 +184,6 @@
 		33C149B1256CEA6A0093E6AE /* Omegacam-ios */ = {
 			isa = PBXGroup;
 			children = (
-				33EE4CEC25E0CE84007E1F18 /* Omegacam-ios.entitlements */,
 				33C149B2256CEA6A0093E6AE /* AppDelegate.swift */,
 				33A828F82588950F00CE8B4B /* AppUtility.swift */,
 				33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */,
@@ -211,9 +224,31 @@
 			children = (
 				33092F1425D8B65700008B9B /* dataManager.swift */,
 				33CE231525D9F58500A8442A /* packetManager.swift */,
-				33C9D61625EB5E6D00D4F245 /* multipartPacketManager.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		3AB25F8715326EE5956C7BD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93D3C58A06892B8E095CEA45 /* Pods_Omegacam_ios.framework */,
+				0B10BBF506A34951806E9815 /* Pods_Omegacam_ios_Omegacam_iosUITests.framework */,
+				E3992E452FFD74945F2836A8 /* Pods_Omegacam_iosTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D26E35BB772F59CBC9FC7FB0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C053D21E79E4208CFA7CE1A /* Pods-Omegacam-ios.debug.xcconfig */,
+				9D32A743E6062E97E767B5F2 /* Pods-Omegacam-ios.release.xcconfig */,
+				B51D61D358AF9B23F4AF1AC3 /* Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig */,
+				C88BFADD2EAC12870BDB6DD8 /* Pods-Omegacam-ios-Omegacam-iosUITests.release.xcconfig */,
+				87BEDDE4FC07A5FA20B3EEDB /* Pods-Omegacam-iosTests.debug.xcconfig */,
+				8FE3B2FD0EF0B5D686E48EA2 /* Pods-Omegacam-iosTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33C149D9256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-ios" */;
 			buildPhases = (
+				43D11F9ABD96555A6C75A6AC /* [CP] Check Pods Manifest.lock */,
 				33C149AB256CEA6A0093E6AE /* Sources */,
 				33C149AC256CEA6A0093E6AE /* Frameworks */,
 				33C149AD256CEA6A0093E6AE /* Resources */,
+				4964D14101F3283E2C4AA0F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,6 +277,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33C149DC256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosTests" */;
 			buildPhases = (
+				C5C93ADA7A01B7320A065EBA /* [CP] Check Pods Manifest.lock */,
 				33C149C1256CEA6C0093E6AE /* Sources */,
 				33C149C2256CEA6C0093E6AE /* Frameworks */,
 				33C149C3256CEA6C0093E6AE /* Resources */,
@@ -258,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33C149DF256CEA6C0093E6AE /* Build configuration list for PBXNativeTarget "Omegacam-iosUITests" */;
 			buildPhases = (
+				257825770A877FC835DBF772 /* [CP] Check Pods Manifest.lock */,
 				33C149CC256CEA6C0093E6AE /* Sources */,
 				33C149CD256CEA6C0093E6AE /* Frameworks */,
 				33C149CE256CEA6C0093E6AE /* Resources */,
+				DC6DDBAB57DCB0C29144B519 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +393,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		257825770A877FC835DBF772 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Omegacam-ios-Omegacam-iosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43D11F9ABD96555A6C75A6AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Omegacam-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4964D14101F3283E2C4AA0F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios/Pods-Omegacam-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5C93ADA7A01B7320A065EBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Omegacam-iosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC6DDBAB57DCB0C29144B519 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Omegacam-ios-Omegacam-iosUITests/Pods-Omegacam-ios-Omegacam-iosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		33C149AB256CEA6A0093E6AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -365,7 +508,6 @@
 				33C149B3256CEA6A0093E6AE /* AppDelegate.swift in Sources */,
 				33AB53B425CF8385002734A3 /* extensions.swift in Sources */,
 				33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */,
-				33C9D61725EB5E6D00D4F245 /* multipartPacketManager.swift in Sources */,
 				33092F1525D8B65700008B9B /* dataManager.swift in Sources */,
 				33EF140C25C6716100502335 /* logManager.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
@@ -462,7 +604,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "Omegacam-ios/Omegacam-ios.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -524,7 +665,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "Omegacam-ios/Omegacam-ios.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -549,6 +689,7 @@
 		};
 		33C149DA256CEA6C0093E6AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C053D21E79E4208CFA7CE1A /* Pods-Omegacam-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -568,6 +709,7 @@
 		};
 		33C149DB256CEA6C0093E6AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D32A743E6062E97E767B5F2 /* Pods-Omegacam-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -587,6 +729,7 @@
 		};
 		33C149DD256CEA6C0093E6AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87BEDDE4FC07A5FA20B3EEDB /* Pods-Omegacam-iosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -608,6 +751,7 @@
 		};
 		33C149DE256CEA6C0093E6AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FE3B2FD0EF0B5D686E48EA2 /* Pods-Omegacam-iosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -629,6 +773,7 @@
 		};
 		33C149E0256CEA6C0093E6AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B51D61D358AF9B23F4AF1AC3 /* Pods-Omegacam-ios-Omegacam-iosUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -648,6 +793,7 @@
 		};
 		33C149E1256CEA6C0093E6AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C88BFADD2EAC12870BDB6DD8 /* Pods-Omegacam-ios-Omegacam-iosUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
