@@ -1,0 +1,6 @@
+framework module SwiftyZeroMQ5 {
+  umbrella header "SwiftyZeroMQ5-umbrella.h"
+
+  export *
+  module * { export * }
+}

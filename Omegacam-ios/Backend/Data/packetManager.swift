@@ -20,11 +20,9 @@ extension dataManager{
         
         var frameData : Data = Data();
         var frameDataSize : Int = -1;
-        
-        var frameNumber : UInt64 = 0;
     }
     
-    internal func encodeStruct(_ s: cameraDataPacket) -> [Data]{
+    internal func encodeStruct(_ s: cameraDataPacket) -> Data{
         var data : Data = Data();
         do{
             data = try JSONEncoder().encode(s);
@@ -32,10 +30,7 @@ extension dataManager{
         catch{
             log.addc("Failed to encode struct into JSON");
         }
-        
-        //log.add("size of packet - \(data.count) bytes");
-        
-        return multipartPacketManager.obj.encodeToMultipart(data);
+        return data;
     }
     
     internal func gatherData() -> cameraDataPacket{
@@ -51,7 +46,6 @@ extension dataManager{
         packet.frameData = frameData;
         packet.frameDataSize = frameData.count;
         
-        packet.frameNumber = self.frameCount;
         //print("frame data - \(frameData)")
         
         return packet;
@@ -102,8 +96,6 @@ extension dataManager{
         }
     
         imageBuffer = nil;
-        
-        //log.add("size of image data - \(ciImageData.count) bytes")
         
         return ciImageData;
         //return Data();
