@@ -19,6 +19,7 @@ class dataManager{
     internal let ciContext = CIContext();
     
     private init(){
+        LocalNetworkPermissionService.obj.triggerDialog();
         delegateThread();
         NotificationCenter.default.addObserver(self, selector: #selector(self.addImageBuffer), name: NSNotification.Name(rawValue: dataManager_imageBuffer), object: nil);
     }
@@ -69,6 +70,8 @@ class dataManager{
                 sleep(3);
             }
         }
+        
+        
     }
     
 }
