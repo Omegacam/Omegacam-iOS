@@ -91,6 +91,7 @@
 		33C149E5256CEADA0093E6AE /* mainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
 		33CE231525D9F58500A8442A /* packetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = packetManager.swift; sourceTree = "<group>"; };
 		33EF140B25C6716100502335 /* logManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logManager.swift; sourceTree = "<group>"; };
+		33F1A16E25F4ADB70057D920 /* Omegacam-ios.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Omegacam-ios.entitlements"; sourceTree = "<group>"; };
 		399F2E44C48B67CEC8BDA954 /* Pods-Omegacam-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		3EABC256291BFC6FD6368BD3 /* Pods_Omegacam_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0E679152339D41AE5255A8 /* Pods_Omegacam_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +185,7 @@
 		33C149B1256CEA6A0093E6AE /* Omegacam-ios */ = {
 			isa = PBXGroup;
 			children = (
+				33F1A16E25F4ADB70057D920 /* Omegacam-ios.entitlements */,
 				33C149B2256CEA6A0093E6AE /* AppDelegate.swift */,
 				33A828F82588950F00CE8B4B /* AppUtility.swift */,
 				33C149B4256CEA6A0093E6AE /* SceneDelegate.swift */,
@@ -604,6 +606,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Omegacam-ios/Omegacam-ios.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -665,6 +668,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Omegacam-ios/Omegacam-ios.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
