@@ -46,7 +46,7 @@ extension dataManager{
         packet.frameData = frameData;
         packet.frameDataSize = frameData.count;
         
-        //print("frame data - \(frameData)")
+        print("frame data - \(frameData.count)")
         
         return packet;
     }
@@ -86,19 +86,30 @@ extension dataManager{
     
     private func getCameraFrameData() -> Data{
         
-        if (imageBuffer == nil){
+        guard let image = imageBuffer else{
             return Data();
         }
         
-        guard let ciImageData = ciContext.jpegRepresentation(of: imageBuffer!, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:]) else{
+        /*guard let ciImageData = ciContext.jpegRepresentation(of: imageBuffer!, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:]) else{
             log.addc("Failed to convert CIImage to jpeg representation");
             return Data();
-        }
+        }*/
     
+        let uiImage = convertCIImage(ciimage: image);
+        
+        guard let uiImageData = uiImage.jpegData(compressionQuality: 0.05) else{
+            log.addc("Failed to convert UIImage to JPEG with compression");
+            return Data();
+        }
+        
         imageBuffer = nil;
         
-        return ciImageData;
+        return uiImageData;
         //return Data();
+    }
+    
+    private func convertCIImage(ciimage: CIImage) -> UIImage{
+        return UIImage(cgImage: ciContext.createCGImage(ciimage, from: ciimage.extent)!);
     }
     
 }
