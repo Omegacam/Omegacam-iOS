@@ -97,7 +97,7 @@ extension dataManager{
     
         let uiImage = convertCIImage(ciimage: image);
         
-        guard let uiImageData = uiImage.jpegData(compressionQuality: 0.05) else{
+        guard let uiImageData = uiImage.jpegData(compressionQuality: 0.0) else{
             log.addc("Failed to convert UIImage to JPEG with compression");
             return Data();
         }
