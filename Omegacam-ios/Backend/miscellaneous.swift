@@ -20,7 +20,6 @@ let InverseBackgroundColor = UIColor(named: "InverseBackgroundColor")!;
 // singleton macros
 
 let communication = communicationClass.obj;
-let discoveryCommunication = discoveryCommunicationClass.obj;
 let camera = cameraManager.obj;
 let datamgr = dataManager.obj;
 

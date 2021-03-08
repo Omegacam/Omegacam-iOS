@@ -22,6 +22,13 @@ extension dataManager{
         var frameDataSize : Int = -1;
     }
     
+    internal struct discoveryDataPacket : Codable{
+        var deviceName : String = "";
+        var localIp : String = "";
+    }
+    
+    //
+    
     internal func encodeStruct(_ s: cameraDataPacket) -> Data{
         var data : Data = Data();
         do{
@@ -33,7 +40,20 @@ extension dataManager{
         return data;
     }
     
-    internal func gatherData() -> cameraDataPacket{
+    internal func encodeStruct(_ s: discoveryDataPacket) -> Data{
+        var data : Data = Data();
+        do{
+            data = try JSONEncoder().encode(s);
+        }
+        catch{
+            log.addc("Failed to encode struct into JSON");
+        }
+        return data;
+    }
+    
+    //
+    
+    internal func gatherCameraData() -> cameraDataPacket{
         var packet = cameraDataPacket();
         packet.deviceName = UIDevice.current.name;
         packet.localIp = LocalNetworkPermissionService.obj.getIPAddress();
@@ -46,12 +66,24 @@ extension dataManager{
         packet.frameData = frameData;
         packet.frameDataSize = frameData.count;
         
-        print("frame data - \(frameData.count)")
+        //print("frame data - \(frameData.count)")
         
         return packet;
     }
     
-    // gatherData Helper functions
+    
+    internal func gatherDiscoveryData() -> discoveryDataPacket{
+        var packet = discoveryDataPacket();
+        
+        packet.deviceName = UIDevice.current.name;
+        packet.localIp = LocalNetworkPermissionService.obj.getIPAddress();
+        
+        return packet;
+    }
+    
+    //
+    
+    // gatherCameraData Helper functions
     private func getCameraResolution() -> (Int, Int){ // (w, h)
 
         let rawString = camera.getSessionPreset()?.rawValue ?? "null";

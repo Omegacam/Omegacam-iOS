@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D2B23AE0745B8B529423F6B /* Pods_Omegacam_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0E679152339D41AE5255A8 /* Pods_Omegacam_iosTests.framework */; };
 		33092F1525D8B65700008B9B /* dataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33092F1425D8B65700008B9B /* dataManager.swift */; };
+		331D32B925F5F20E00D9AA7D /* udpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331D32B825F5F20E00D9AA7D /* udpsocket.swift */; };
 		33798C4325CD197500E10EAF /* cameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4225CD197500E10EAF /* cameraManager.swift */; };
 		33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33798C4825CD211800E10EAF /* mainViewUI.swift */; };
 		337FE909258B2B290051122F /* communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FE908258B2B290051122F /* communication.swift */; };
@@ -41,9 +42,6 @@
 		33C149E8256CEADA0093E6AE /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C149E5256CEADA0093E6AE /* mainView.swift */; };
 		33CE231625D9F58500A8442A /* packetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE231525D9F58500A8442A /* packetManager.swift */; };
 		33EF140C25C6716100502335 /* logManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF140B25C6716100502335 /* logManager.swift */; };
-		33F1A17425F4B29E0057D920 /* discoveryCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A17325F4B29E0057D920 /* discoveryCommunication.swift */; };
-		33F1A17525F4B29E0057D920 /* discoveryCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A17325F4B29E0057D920 /* discoveryCommunication.swift */; };
-		33F1A17625F4B29E0057D920 /* discoveryCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A17325F4B29E0057D920 /* discoveryCommunication.swift */; };
 		33F1A18225F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A18125F4B3C00057D920 /* LocalNetworkPermissionService.swift */; };
 		33F1A18325F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A18125F4B3C00057D920 /* LocalNetworkPermissionService.swift */; };
 		33F1A18425F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1A18125F4B3C00057D920 /* LocalNetworkPermissionService.swift */; };
@@ -71,6 +69,7 @@
 /* Begin PBXFileReference section */
 		2394F8150D0407364BBD1BB7 /* Pods-Omegacam-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		33092F1425D8B65700008B9B /* dataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataManager.swift; sourceTree = "<group>"; };
+		331D32B825F5F20E00D9AA7D /* udpsocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = udpsocket.swift; sourceTree = "<group>"; };
 		33798C4225CD197500E10EAF /* cameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraManager.swift; sourceTree = "<group>"; };
 		33798C4825CD211800E10EAF /* mainViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewUI.swift; sourceTree = "<group>"; };
 		337FE908258B2B290051122F /* communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communication.swift; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 		33CE231525D9F58500A8442A /* packetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = packetManager.swift; sourceTree = "<group>"; };
 		33EF140B25C6716100502335 /* logManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logManager.swift; sourceTree = "<group>"; };
 		33F1A16E25F4ADB70057D920 /* Omegacam-ios.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Omegacam-ios.entitlements"; sourceTree = "<group>"; };
-		33F1A17325F4B29E0057D920 /* discoveryCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discoveryCommunication.swift; sourceTree = "<group>"; };
 		33F1A18125F4B3C00057D920 /* LocalNetworkPermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPermissionService.swift; sourceTree = "<group>"; };
 		399F2E44C48B67CEC8BDA954 /* Pods-Omegacam-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omegacam-iosTests.release.xcconfig"; path = "Target Support Files/Pods-Omegacam-iosTests/Pods-Omegacam-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		3EABC256291BFC6FD6368BD3 /* Pods_Omegacam_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omegacam_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,7 +241,7 @@
 			children = (
 				33F1A18125F4B3C00057D920 /* LocalNetworkPermissionService.swift */,
 				337FE908258B2B290051122F /* communication.swift */,
-				33F1A17325F4B29E0057D920 /* discoveryCommunication.swift */,
+				331D32B825F5F20E00D9AA7D /* udpsocket.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -530,10 +528,10 @@
 				33798C4925CD211800E10EAF /* mainViewUI.swift in Sources */,
 				33092F1525D8B65700008B9B /* dataManager.swift in Sources */,
 				33EF140C25C6716100502335 /* logManager.swift in Sources */,
+				331D32B925F5F20E00D9AA7D /* udpsocket.swift in Sources */,
 				33F1A18225F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */,
 				337FE909258B2B290051122F /* communication.swift in Sources */,
 				33C149B5256CEA6A0093E6AE /* SceneDelegate.swift in Sources */,
-				33F1A17425F4B29E0057D920 /* discoveryCommunication.swift in Sources */,
 				33CE231625D9F58500A8442A /* packetManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +541,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C149CA256CEA6C0093E6AE /* Omegacam_iosTests.swift in Sources */,
-				33F1A17525F4B29E0057D920 /* discoveryCommunication.swift in Sources */,
 				33C149E7256CEADA0093E6AE /* mainView.swift in Sources */,
 				33AB53B525CF8385002734A3 /* extensions.swift in Sources */,
 				33F1A18325F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */,
@@ -555,7 +552,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C149D5256CEA6C0093E6AE /* Omegacam_iosUITests.swift in Sources */,
-				33F1A17625F4B29E0057D920 /* discoveryCommunication.swift in Sources */,
 				33C149E8256CEADA0093E6AE /* mainView.swift in Sources */,
 				33AB53B625CF8385002734A3 /* extensions.swift in Sources */,
 				33F1A18425F4B3C10057D920 /* LocalNetworkPermissionService.swift in Sources */,

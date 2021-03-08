@@ -20,7 +20,7 @@ class dataManager{
     
     private init(){
         LocalNetworkPermissionService.obj.triggerDialog();
-        delegateThread();
+        delegateThreads();
         NotificationCenter.default.addObserver(self, selector: #selector(self.addImageBuffer), name: NSNotification.Name(rawValue: dataManager_imageBuffer), object: nil);
     }
     
@@ -43,7 +43,7 @@ class dataManager{
         }
     }
     
-    private func delegateThread(){
+    private func delegateThreads(){
         DispatchQueue.global(qos: .background).async {
             while true{
                 var i = 0;
@@ -53,11 +53,11 @@ class dataManager{
                     
                     do{
                         try autoreleasepool{ // warning shows that no throws could be called but the do catch is necessary due to the fact that we need autoreleasepool in order to not leak memory with JSONEncoder
-                            if (!communication.send(self.encodeStruct(self.gatherData()))){
-                                log.addc("Failed to send data");
+                            if (!communication.send(self.encodeStruct(self.gatherCameraData()))){
+                                log.addc("Failed to send camera data");
                             }
                             else{
-                                print("Sucess - \(i)");
+                                //print("Sucess - \(i)");
                                 i+=1;
                             }
                         }
@@ -71,6 +71,25 @@ class dataManager{
             }
         }
         
+        DispatchQueue(label: "discoveryQueue", qos: .unspecified).async {
+            
+            let discoveryBroadcasterSocket = udpsocket();
+            
+            if (discoveryBroadcasterSocket.connect(ip: "224.1.1.1", port: 5555)){
+                while true{
+                    //log.add("in queue");
+                    
+                    if !(discoveryBroadcasterSocket.send(self.encodeStruct(self.gatherDiscoveryData()))){
+                        log.addc("Failed to send discovery data");
+                    }
+                    
+                    sleep(2);
+                }
+            }
+            else{
+                log.addc("Failed to connect discovery socket");
+            }
+        }
         
     }
     
