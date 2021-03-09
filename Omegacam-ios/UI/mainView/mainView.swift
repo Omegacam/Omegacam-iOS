@@ -25,6 +25,8 @@ class mainClass: UIViewController {
         log.add("Device name - \(UIDevice.current.name)");
         log.add("OS - \(UIDevice.current.systemName) with version # \(UIDevice.current.systemVersion)");
         
+        UIApplication.shared.isIdleTimerDisabled = true;
+        
         mainView = UIView(frame: CGRect(x: 0, y: AppUtility.topSafeAreaInsetHeight, width: AppUtility.getCurrentScreenSize().width, height: AppUtility.getCurrentScreenSize().height - AppUtility.topSafeAreaInsetHeight));
         self.view.addSubview(mainView);
         
@@ -33,7 +35,7 @@ class mainClass: UIViewController {
         
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait);
         
-        if (communication.connect(connectionstr: "tcp://*:1234")){
+        if (communication.connect(connectionstr: "tcp://*:\(cameraConnectionPort)")){
             log.add(LocalNetworkPermissionService.obj.getIPAddress());
             
             AppUtility.lockOrientation(.portrait);

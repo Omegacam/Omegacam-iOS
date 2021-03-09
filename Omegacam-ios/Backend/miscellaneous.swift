@@ -30,4 +30,5 @@ let mainView_showCameraView = "mainView_showCameraView";
 
 let dataManager_imageBuffer = "dataManager_imageBuffer";
 
+let cameraConnectionPort = 5000;
 

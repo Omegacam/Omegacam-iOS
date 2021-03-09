@@ -24,7 +24,8 @@ extension dataManager{
     
     internal struct discoveryDataPacket : Codable{
         var deviceName : String = "";
-        var localIp : String = "";
+        var cameraConnectionIP : String = "";
+        var cameraConnectionPort : UInt32 = 0;
     }
     
     //
@@ -76,8 +77,9 @@ extension dataManager{
         var packet = discoveryDataPacket();
         
         packet.deviceName = UIDevice.current.name;
-        packet.localIp = LocalNetworkPermissionService.obj.getIPAddress();
-        
+        packet.cameraConnectionIP = LocalNetworkPermissionService.obj.getIPAddress();
+        packet.cameraConnectionPort = UInt32(cameraConnectionPort);
+    
         return packet;
     }
     

@@ -47,6 +47,9 @@ class dataManager{
         DispatchQueue.global(qos: .background).async {
             while true{
                 var i = 0;
+                
+                log.add("Starting to send data now");
+                
                 while self.shouldRun{
                     
                     //let data = try! MessagePackEncoder().encode(cameraDataPacket(s: "Test"));
