@@ -28,6 +28,7 @@ class cameraManager: NSObject{
             self.setupCaptureSession();
             
         case .notDetermined:
+            
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted) in
                 if (granted){
                     DispatchQueue.main.async {
@@ -38,10 +39,15 @@ class cameraManager: NSObject{
                     self.handleDismiss("The user has not granted acces to the camera");
                 }
             });
+            
         case .denied:
+            
             self.handleDismiss("The user has previously denied access to the camera");
+            
         case .restricted:
+            
             self.handleDismiss("The user can't give camera access due to some unknown restriction");
+       
         default:
             self.handleDismiss("There was an unknown error that occured when trying to access the camera");
         }
@@ -80,7 +86,7 @@ class cameraManager: NSObject{
             var dataDict : [String : Any] = [:];
             dataDict["cameraLayer"] = cameraLayer;
             //dataDict["videoDataOutput"] = videoDataOutput;
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showCameraView), object: nil, userInfo: dataDict);
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_setupCameraPreviewLayer), object: nil, userInfo: dataDict);
             
             if (!setUpSessionPreset()){
                 handleDismiss("Unable to set a suitable camera profile for your device");
@@ -95,7 +101,7 @@ class cameraManager: NSObject{
     }
     
     private func handleDismiss(_ s: String){
-        log.addc(s);
+        log.addc("Camera error: " + s);
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: mainView_showErrorView), object: nil, userInfo: nil);
     }
     

@@ -46,9 +46,7 @@ class dataManager{
     private func delegateThreads(){
         DispatchQueue.global(qos: .background).async {
             while true{
-                var i = 0;
-                
-                log.add("Starting to send data now");
+                //var i = 0;
                 
                 while self.shouldRun{
                     
@@ -61,7 +59,7 @@ class dataManager{
                             }
                             else{
                                 //print("Sucess - \(i)");
-                                i+=1;
+                                //i+=1;
                             }
                         }
                     }
@@ -70,6 +68,9 @@ class dataManager{
                     //usleep(800); // 60 fps
                     usleep(1600); // 30 fps
                 }
+                
+                log.add("Should run is false... trying again");
+                
                 sleep(3);
             }
         }

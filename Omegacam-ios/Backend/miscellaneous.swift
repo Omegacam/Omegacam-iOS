@@ -26,7 +26,7 @@ let datamgr = dataManager.obj;
 // NSNotification macros
 
 let mainView_showErrorView = "mainView_showErrorView";
-let mainView_showCameraView = "mainView_showCameraView";
+let mainView_setupCameraPreviewLayer = "mainView_setupCameraPreviewLayer";
 
 let dataManager_imageBuffer = "dataManager_imageBuffer";
 
