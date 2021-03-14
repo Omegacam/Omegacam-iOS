@@ -99,9 +99,6 @@ extension mainClass{
     
     @objc func showCameraView(_ notification: NSNotification){
         
-        
-        self.view.layer.sublayers?.forEach({ $0.removeFromSuperlayer() });
-        
         if let dict = notification.userInfo as NSDictionary?{
             if let cameraLayer = dict["cameraLayer"] as? AVCaptureVideoPreviewLayer{
                 
